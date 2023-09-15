@@ -1,5 +1,4 @@
 // ignore_for_file: non_constant_identifier_names, unnecessary_const
-
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,26 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 
+import '../../layouts/shop_app/search/search_screen.dart';
+import '../../layouts/shop_app/shop_layout/shop_layout.dart';
 import '../themes/themes.dart';
+
+AppBar defaultAppBar(BuildContext context)
+=> AppBar(title:Center(child: const Text("Bazaar")),
+leading: MaterialButton(
+  child: Image(width: 100,image:AssetImage("assets/images/bazaar.png")),
+onPressed: ()
+{
+  navigateAndFinish(context,ShopLayout());
+}
+),
+actions: [
+IconButton(onPressed:(){
+navigateTo(context,SearchScreen());
+},
+icon: const Icon(Icons.search))
+],);
+
 
 void navigateTo(context,widget)
   =>Navigator.push(context,MaterialPageRoute(

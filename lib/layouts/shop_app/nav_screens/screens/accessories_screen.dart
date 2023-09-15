@@ -75,18 +75,7 @@ class AccessoriesScreen extends StatelessWidget {
     ];
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title:Center(child: const Text("Bazaar")),
-          leading: IconButton(
-            onPressed: (){navigateAndFinish(context,ShopLayout());}
-            ,icon: Icon(Icons.arrow_back_ios,color: Colors.black87,),
-          ),
-          actions: [
-            IconButton(onPressed:(){
-              navigateTo(context,SearchScreen());
-            },
-                icon: const Icon(Icons.search))
-          ],),
-
+        appBar: defaultAppBar(context),
         body: SingleChildScrollView(
           child: Column(children: [
             const SearchWidget(),
