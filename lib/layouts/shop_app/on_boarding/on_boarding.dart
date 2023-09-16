@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:task/layouts/shop_app/log_in/login_screen.dart';
 import 'package:task/shared/components/components.dart';
 import 'package:task/shared/themes/themes.dart';
 
 import '../../../network/local/cache_helper.dart';
+import '../login_register/log_in/login_screen.dart';
 
 class BoardingModel
 {

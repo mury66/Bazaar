@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task/layouts/shop_app/log_in/cubit/states.dart';
+import 'package:task/layouts/shop_app/login_register/log_in/login_cubit/states.dart';
 import 'package:task/network/remote/dio_helper.dart';
 import 'package:task/network/remote/end_points/end_points.dart';
-import '../../../../models/shop_app/login_model/login_model.dart';
+import '../../../../../models/login_model/login_model.dart';
 
 class LoginCubit extends Cubit<LoginStates>
 {
-  LoginCubit(): super(LoginInitialState());
+  LoginCubit(super.initialState);
 
   late LoginModel userDataModel;
 
@@ -15,22 +15,19 @@ class LoginCubit extends Cubit<LoginStates>
 
   IconData passSuffix = Icons.visibility_outlined;
 
-  void changePasswordVisibility()
-  {
+  static LoginCubit get(context) => BlocProvider.of(context);
+
+  void changePasswordVisibility() {
     isVisible=!isVisible;
-    print(isVisible);
     isVisible ? passSuffix=Icons.visibility_off_outlined : passSuffix=Icons.visibility_outlined;
     emit(LoginChangePasswordVisibility());
   }
 
 
-  static LoginCubit get(context) => BlocProvider.of(context);
-
-  void userLogin({required String email, required String password})
-  {
+  void userLogin({required String email, required String password}){
     emit(LoginLoadingState());
     DioHelper.postData(
-        lang: "ar",
+        lang: "en",
         url: LOGIN,
         data: {
           "email":email,
@@ -48,4 +45,5 @@ class LoginCubit extends Cubit<LoginStates>
       }
     );
   }
+
 }

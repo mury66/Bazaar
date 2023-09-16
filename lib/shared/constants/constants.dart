@@ -1,7 +1,7 @@
-import 'package:task/layouts/shop_app/log_in/login_screen.dart';
+import 'package:task/layouts/shop_app/login_register/log_in/login_screen.dart';
 import 'package:task/shared/components/components.dart';
 
-import '../../layouts/shop_app/nav_screens/model/item_componet_model.dart';
+import '../../models/item_model/item_componet_model.dart';
 import '../../network/local/cache_helper.dart';
 
 void SignOut(context)
@@ -165,7 +165,7 @@ List<ItemComponentModel> accessories = [
       onTap: () {}),
   ItemComponentModel(
       categoryName: 'Accessories',
-      categoryImg: 'assets/images/Accessories.png',
+      categoryImg: 'assets/images/accessories.png',
       locaion: 'Downtown - Cairo',
       ownerName: 'Youssef',
       price: 50.6,
@@ -237,5 +237,6 @@ List<ItemComponentModel> sculpture = [
       price: 45.99,
       onTap: () {}),
 ];
+
 
 

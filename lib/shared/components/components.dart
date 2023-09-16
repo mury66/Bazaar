@@ -8,6 +8,8 @@ import 'package:task/shared/cubit/shop_cubit.dart';
 
 import '../../layouts/shop_app/search/search_screen.dart';
 import '../../layouts/shop_app/shop_layout/shop_layout.dart';
+import '../../models/categories/categories_list_model.dart';
+import '../../models/item_model/item_componet_model.dart';
 import '../themes/themes.dart';
 
 AppBar defaultAppBar(BuildContext context)
@@ -178,106 +180,115 @@ Widget defaultButton({
   ),
 );
 
-Widget buildArticleItem(article,context) => InkWell(
-  onTap: (){
-
-  },
-  child:   Padding(
-
-    padding: const EdgeInsets.all(10.0),
-
-    child: Row(
-
-      children: [
-
-        Container(
-
-          width: 120,
-
-          height: 120 ,
-
-          decoration: BoxDecoration(
-
-              borderRadius: BorderRadius.circular(10),
-
-              image: DecorationImage(
-
-                  image: NetworkImage("${article["urlToImage"]}"),
-
-                  fit:BoxFit.cover
-
-              )
-
+Widget categoryItem(CategoriesModel model, index,context)=>InkWell(
+  onTap: model.onTap,
+  child: Column(
+    children: [
+      Padding(
+        padding:
+        const EdgeInsets.only(top: 18, bottom: 5, right: 22, left: 22),
+        child: CircleAvatar(
+          backgroundImage: AssetImage(
+            model.img,
           ),
-
-
-
+          radius: 35,
         ),
-
-        const SizedBox(width: 20,),
-
-        Expanded(
-
-          child: Container(
-
-            height: 120,
-
-            child: Column(
-
-              crossAxisAlignment: CrossAxisAlignment.start,
-
-              mainAxisAlignment: MainAxisAlignment.start,
-
-              children: [
-
-                Expanded(
-
-                  child: Text("${article["title"]}",
-
-                    maxLines: 3,
-
-                    overflow: TextOverflow.ellipsis,
-
-                    style: Theme.of(context).textTheme.bodyLarge ,
-
-                )),
-
-                Text("${article["publishedAt"]}",
-
-                  style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w600,color: Colors.grey),
-
-                ),
-
-
-
-              ],
-
-            ),
-
-          ),
-
-        )
-
-      ],
-
-    ),
-
+      ),
+      Text(
+        model.categoryName,
+        style: const TextStyle(
+            fontSize: 17, fontWeight: FontWeight.w400, color: Colors.black),
+      ),
+      index == ShopCubit.get(context).homeScreenIndex?
+      Container(
+        width: 35,
+        height: 3,
+        color: PrimaryColour,
+      ): Container()
+    ],
   ),
 );
 
-Widget articleBuilder(list,context) => ConditionalBuilder(
-    condition:(list.isNotEmpty),
-    builder: (context) =>ListView.separated(
-      physics: const BouncingScrollPhysics(),
-      itemBuilder: (context,index)=>buildArticleItem(list[index],context),
-      separatorBuilder:(context,index)=>Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Container(height: 1,
-          color: Color.fromARGB(255, 255, 214, 156),),
-      ) ,
-      itemCount: list.length ,
-    ) ,
-    fallback: (context) => const Center(
-        child: CircularProgressIndicator(
-          color: Color.fromARGB(255, 255, 214, 156),))
+Widget categoryItemBuilder(List<CategoriesModel> categories,context)=>ListView.builder(
+  itemBuilder: (context, index) => categoryItem(categories[index],index,context),
+  itemCount: categories.length,
+  physics: const BouncingScrollPhysics(),
+  scrollDirection: Axis.horizontal,
+  shrinkWrap: true,
+);
+
+Widget productItem(ItemComponentModel model)=>InkWell(
+  onTap: model.onTap,
+  child: Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 10),
+    child: Column(
+      // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                width: double.infinity,
+                height: 140,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(model.categoryImg),
+                        fit: BoxFit.fill),
+                    borderRadius: BorderRadius.circular(5)),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Color.fromARGB(255, 231, 225, 225),
+                    child: Icon(
+                      Icons.favorite_border_sharp,
+                      size: 18,
+                    )),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 3,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                model.categoryName,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              Text(
+                'Made by: ${model.ownerName}',
+                style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black),
+              ),
+              Text(
+                model.locaion,
+                style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                'EGP ${model.price} ',
+                style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red),
+              ),
+            ],
+          ),
+        ]),
+  ),
 );

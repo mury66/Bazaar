@@ -22,8 +22,8 @@ class UserData
   late String email;
   late String phone;
   late String image;
-  late int points;
-  late int credit;
+  late int? points;
+  late int? credit;
   late String token;
 
   UserData.fromJson(Map<String,dynamic> json){
