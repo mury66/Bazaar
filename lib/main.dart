@@ -47,7 +47,6 @@ import 'network/local/cache_helper.dart';
 
 class MyApp extends StatelessWidget {
 
-  final bool isDark;
   final Widget startWidget;
 
   const MyApp(this.startWidget);
@@ -58,7 +57,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context)=>ShopCubit(ShopInitialState())),
-        BlocProvider(create: (context)=>AppCubit(AppInitialState())..changeAppMode(isDark))
+        BlocProvider(create: (context)=>AppCubit(AppInitialState()))
       ],
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (BuildContext context, state)=>{} ,
