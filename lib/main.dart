@@ -21,7 +21,6 @@ import 'network/local/cache_helper.dart';
     Bloc.observer = const SimpleBlocObserver();
     DioHelper.init();
     await CacheHelper.init();
-    bool? isDark = CacheHelper.getData(key: "isDark");
     String? token = CacheHelper.getData(key: "token");
     bool? onBoarding = CacheHelper.getData(key: "onBoarding");
     late Widget startWidget;
@@ -43,7 +42,7 @@ import 'network/local/cache_helper.dart';
         startWidget = OnBoardingScreen();
       }
 
-    runApp(MyApp(isDark!,startWidget!));
+    runApp(MyApp(startWidget!));
 }
 
 class MyApp extends StatelessWidget {
@@ -51,7 +50,7 @@ class MyApp extends StatelessWidget {
   final bool isDark;
   final Widget startWidget;
 
-  const MyApp(this.isDark, this.startWidget);
+  const MyApp(this.startWidget);
 
   // This widget is the root of your application.
   @override
@@ -70,7 +69,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: lightTheme,
           darkTheme: darkTheme,
-          themeMode: cubit.isDark? ThemeMode.dark:ThemeMode.light,
+          themeMode:ThemeMode.light,
           debugShowCheckedModeBanner: false,
           home: startWidget,
           );
