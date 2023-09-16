@@ -1,12 +1,8 @@
-import 'dart:ffi';
-import 'dart:io';
-
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:task/layouts/shop_app/log_in/cubit/cubit.dart';
 import 'package:task/layouts/shop_app/register/register_screen.dart';
 import 'package:task/layouts/shop_app/shop_layout/shop_layout.dart';
@@ -121,30 +117,41 @@ class LogInScreen extends StatelessWidget {
                         ),
                         const SizedBox(
                           height: 20,),
-                        ConditionalBuilder(
-                            condition: (State is! LoginLoadingState),
-                            builder: (context)=>
-                                defaultButton(
-                                    text: "Login",
-                                    isUpper: false,
-                                    pressed: ()
-                                    {
-                                      if(formKey.currentState!.validate())
-                                        {
-                                          LoginCubit.get(context).userLogin(
-                                              email: EmailController.text,
-                                              password: PasswordController.text
-                                          );
-                                        }
-                                    }
-                                ),
-
-                            fallback: (context)=>
-                                const Center(child: CircularProgressIndicator(
-                                  color: PrimaryColour,
-                                ))
-                        ),
-                        const SizedBox(
+                    state is! LoginLoadingState ?
+                    defaultButton(text: "Login", isUpper: false, pressed: () {
+                        if(formKey.currentState!.validate())
+                        {
+                          LoginCubit.get(context).userLogin(
+                              email: EmailController.text,
+                              password: PasswordController.text
+                          );
+                        }
+                      }) :
+                    const Center(child: CircularProgressIndicator(color: PrimaryColour,))
+                        // ConditionalBuilder(
+                        //     condition: (State is! LoginLoadingState),
+                        //     builder: (context)=>
+                        //         defaultButton(
+                        //             text: "Login",
+                        //             isUpper: false,
+                        //             pressed: ()
+                        //             {
+                        //               if(formKey.currentState!.validate())
+                        //                 {
+                        //                   LoginCubit.get(context).userLogin(
+                        //                       email: EmailController.text,
+                        //                       password: PasswordController.text
+                        //                   );
+                        //                 }
+                        //             }
+                        //         ),
+                        //
+                        //     fallback: (context)=>
+                        //         const Center(child: CircularProgressIndicator(
+                        //           color: PrimaryColour,
+                        //         ))
+                        // ),
+                        ,const SizedBox(
                           height: 60,),
                         const Text(
                             "───────────  or Sign In With  ───────────",
