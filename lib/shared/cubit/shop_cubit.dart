@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task/layouts/shop_app/categories/categories_screen.dart';
-import 'package:task/layouts/shop_app/favourites/favourites_screen.dart';
-import 'package:task/layouts/shop_app/products/products_screen.dart';
-import 'package:task/layouts/shop_app/settings/settings_screen.dart';
 import 'package:task/shared/cubit/Shop_states.dart';
-import '../../layouts/shop_app/nav_screens/screens/craft_screen.dart';
+import '../../layouts/shop_app/account/account_screen.dart';
+import '../../layouts/shop_app/cart/favourites_screen.dart';
+import '../../layouts/shop_app/chats/chats_screen.dart';
+import '../../layouts/shop_app/home_screen/home_screen.dart';
+import '../../layouts/shop_app/sell/sell_screen.dart';
 import '../../network/remote/dio_helper.dart';
 
 
@@ -16,6 +16,8 @@ class ShopCubit extends Cubit<ShopStates> {
   static ShopCubit get(context) => BlocProvider.of(context);
 
   int current = 0;
+
+  int homeScreenIndex = 0;
 
   List<BottomNavigationBarItem> bottomItems =const [
     BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home_outlined, size: 23,),
@@ -31,16 +33,21 @@ class ShopCubit extends Cubit<ShopStates> {
   ];
 
   List<Widget> bottomScreens = const [
-    CraftScreen(),
-    ProductsScreen(),
-    CategoriesScreen(),
-    FavouriteScreen(),
-    SettingsScreen(),
+    HomeScreen(),
+    ChatsScreen(),
+    SellScreen(),
+    CartScreen(),
+    Account_Screen(),
   ];
 
   void changeIndex(int index){
     current = index;
     emit(ShopChangeBottomNavBarState());
+  }
+
+  void changeCats(int index){
+    homeScreenIndex = index;
+    emit(ShopChangeCatState());
   }
 
   void getSearch(String value){

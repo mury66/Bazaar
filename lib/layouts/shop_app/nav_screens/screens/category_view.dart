@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:task/layouts/shop_app/nav_screens/screens/painting_screen.dart';
-import 'package:task/layouts/shop_app/nav_screens/screens/sculpture_screen.dart';
+import 'package:task/shared/cubit/Appcubit.dart';
+import '../../../../shared/cubit/shop_cubit.dart';
 import '../model/categories_list_model.dart';
 import '../widgets/categories_list.dart';
-import 'accessories_screen.dart';
-import 'craft_screen.dart';
 
 class CategoryView extends StatelessWidget {
   const CategoryView({super.key});
@@ -15,42 +13,32 @@ class CategoryView extends StatelessWidget {
       CategoriesModel(
           categoryName: 'Craft',
           img: 'assets/images/craft.png',
-          onTap: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const CraftScreen()),
-            );
-          }),
+          onTap: (){
+            ShopCubit.get(context).changeCats(0);
+          }
+      ),
       CategoriesModel(
           categoryName: 'Painting',
           img: 'assets/images/painting.png',
-          onTap: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PaintingScreen(),
-                ));
-          }),
+          onTap: (){
+            ShopCubit.get(context).changeCats(1);
+          }
+
+          ),
       CategoriesModel(
           categoryName: 'Accessories ',
           img: 'assets/images/accessories.png',
-          onTap: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AccessoriesScreen(),
-                ));
-          }),
+          onTap: (){
+            ShopCubit.get(context).changeCats(2);
+          }
+),
       CategoriesModel(
           categoryName: 'Sculpture ',
           img: 'assets/images/sculpture.jpg',
-          onTap: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SculptureScreen(),
-                ));
-          }),
+          onTap: (){
+            ShopCubit.get(context)..changeCats(3);
+          }
+      ),
     ];
 
     return ListView.builder(
