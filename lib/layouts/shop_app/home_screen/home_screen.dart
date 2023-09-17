@@ -5,7 +5,6 @@ import '../../../shared/components/components.dart';
 import '../../../shared/constants/constants.dart';
 import '../../../shared/cubit/Shop_states.dart';
 import '../../../shared/cubit/shop_cubit.dart';
-import '../nav_screens/widgets/search_bar.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
