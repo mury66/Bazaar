@@ -4,6 +4,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:task/layouts/shop_app/cart/cart_screen.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 
 import '../../layouts/shop_app/search/search_screen.dart';
@@ -12,39 +13,41 @@ import '../../models/categories/categories_list_model.dart';
 import '../../models/item_model/item_componet_model.dart';
 import '../themes/themes.dart';
 
-AppBar defaultAppBar(BuildContext context)
-=> AppBar(title:Center(child: const Text("Bazaar")),
-leading: MaterialButton(
-  child: Image(width: 100,image:AssetImage("assets/images/bazaar.png")),
-onPressed: ()
-{
-  navigateAndFinish(context,ShopLayout());
-}
-),
-actions: [
-IconButton(onPressed:(){
-navigateTo(context,SearchScreen());
-},
-icon: const Icon(Icons.search))
-],);
+AppBar defaultAppBar(BuildContext context) => AppBar(
+  elevation: 0,
+      title: const Center(child: Text("6th of october")),
+      leading: MaterialButton(
+          child:
+              Image(width: 100, image: AssetImage("assets/images/bazaar.png")),
+          onPressed: () {
+            navigateAndFinish(context, ShopLayout());
+          }),
+      actions: [
+        IconButton(
+            onPressed: () {
+              navigateTo(context, SearchScreen());
+            },
+            icon: const Icon(
+              Icons.search,
+              color: Colors.black87,
+            ))
+      ],
+    );
 
+void navigateTo(context, widget) =>
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
 
-void navigateTo(context,widget)
-  =>Navigator.push(context,MaterialPageRoute(
-      builder:(context)=>widget)
-  );
+void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => widget),
+      (route) => false,
+    );
 
-void navigateAndFinish(context,widget)
-  =>Navigator.pushAndRemoveUntil(context,
-      MaterialPageRoute(
-    builder:(context)=>widget),
-    (route) => false,
-);
-
-void showSnackBar({
-  required context,required ContentType type ,
-  required String message, required String title}
-    ) {
+void showSnackBar(
+    {required context,
+    required ContentType type,
+    required String message,
+    required String title}) {
   final snackBar = SnackBar(
     elevation: 0,
     behavior: SnackBarBehavior.fixed,
@@ -60,9 +63,9 @@ void showSnackBar({
     ..showSnackBar(snackBar);
 }
 
-
 Widget defaultinputform({
-  context,IconData? sufix,
+  context,
+  IconData? sufix,
   bool isPassword = false,
   bool isClickable = true,
   Function()? suffixOnPressed,
@@ -73,222 +76,191 @@ Widget defaultinputform({
   required TextInputType type,
   required IconData prefix,
   required TextEditingController controller,
-  required String hint,})
-=>TextFormField(
-
+  required String hint,
+}) =>
+    TextFormField(
         style: const TextStyle(
-
           fontSize: 15,
-
         ),
-
         controller: controller,
-
         keyboardType: type,
-
         obscureText: isPassword,
-
         enabled: isClickable,
-
         validator: validator,
-
         onFieldSubmitted: submitted,
-
         onChanged: onChanged,
-
         onTap: tapped,
-
         cursorColor: const Color.fromARGB(255, 0, 0, 0),
-
         decoration: InputDecoration(
-
             filled: true,
-
             fillColor: HexColor("#E1E1E1"),
-
             hintText: hint,
-
             hintStyle: const TextStyle(
-
               fontSize: 15,
-
               color: Color.fromARGB(255, 119, 119, 119),
-
             ),
-
             iconColor: Colors.white,
-
             enabledBorder: OutlineInputBorder(
-
               borderRadius: BorderRadius.circular(12.0),
-
               borderSide: const BorderSide(
-
-                color: Color.fromARGB(1, 255, 255, 255),//(225,225,225,1.000)
+                color: Color.fromARGB(1, 255, 255, 255), //(225,225,225,1.000)
 
                 width: 2.0,
-
               ),
-
             ),
-
             border: OutlineInputBorder(
-
-              borderSide:BorderSide(color:Colors.white),
-
+              borderSide: BorderSide(color: Colors.white),
               borderRadius: BorderRadius.circular(12),
-
             ),
-
-            focusedBorder:OutlineInputBorder(
-
-              borderSide:const BorderSide(color:PrimaryColour),
-
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: PrimaryColour),
               borderRadius: BorderRadius.circular(12),
-
             ),
-
-            prefixIcon: Icon(prefix,size: 20,color: HexColor("#5A5A5A")),
-
+            prefixIcon: Icon(prefix, size: 20, color: HexColor("#5A5A5A")),
             suffixIcon: IconButton(
-
-              icon: Icon(sufix,size: 20,color: HexColor("#5A5A5A")),
-
+              icon: Icon(sufix, size: 20, color: HexColor("#5A5A5A")),
               onPressed: suffixOnPressed,
-
             )));
 
-Widget defaultButton({
-  required String text,
-  required void Function() pressed,
-  bool isUpper = false })
-=>Container(
-  width: double.infinity,
-  height: 60,
-  decoration: BoxDecoration(
-      color: PrimaryColour,
-      borderRadius: BorderRadius.circular(12)
-  ),
-  child: MaterialButton(
-    onPressed:pressed,
-    child: Text(
-      isUpper? text.toUpperCase():text,style: const TextStyle(
-
-        fontSize: 22,color: Colors.white
-    ),
-    ),
-  ),
-);
-
-Widget categoryItem(CategoriesModel model, index,context)=>InkWell(
-  onTap: model.onTap,
-  child: Column(
-    children: [
-      Padding(
-        padding:
-        const EdgeInsets.only(top: 18, bottom: 5, right: 22, left: 22),
-        child: CircleAvatar(
-          backgroundImage: AssetImage(
-            model.img,
-          ),
-          radius: 35,
+Widget defaultButton(
+        {required String text,
+        required void Function() pressed,
+        bool isUpper = false}) =>
+    Container(
+      width: double.infinity,
+      height: 60,
+      decoration: BoxDecoration(
+          color: PrimaryColour, borderRadius: BorderRadius.circular(12)),
+      child: MaterialButton(
+        onPressed: pressed,
+        child: Text(
+          isUpper ? text.toUpperCase() : text,
+          style: const TextStyle(fontSize: 22, color: Colors.white),
         ),
       ),
-      Text(
-        model.categoryName,
-        style: const TextStyle(
-            fontSize: 17, fontWeight: FontWeight.w400, color: Colors.black),
-      ),
-      index == ShopCubit.get(context).homeScreenIndex?
-      Container(
-        width: 35,
-        height: 3,
-        color: PrimaryColour,
-      ): Container()
-    ],
-  ),
-);
+    );
 
-Widget categoryItemBuilder(List<CategoriesModel> categories,context)=>ListView.builder(
-  itemBuilder: (context, index) => categoryItem(categories[index],index,context),
-  itemCount: categories.length,
-  physics: const BouncingScrollPhysics(),
-  scrollDirection: Axis.horizontal,
-  shrinkWrap: true,
-);
-
-Widget productItem(ItemComponentModel model)=>InkWell(
-  onTap: model.onTap,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10),
-    child: Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+Widget categoryItem(CategoriesModel model, index, context) => InkWell(
+      onTap: model.onTap,
+      child: Column(
         children: [
-          Stack(
-            alignment: Alignment.topRight,
-            children: [
-              Container(
-                width: double.infinity,
-                height: 140,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(model.categoryImg),
-                        fit: BoxFit.fill),
-                    borderRadius: BorderRadius.circular(5)),
+          Padding(
+            padding:
+                const EdgeInsets.only(top: 18, bottom: 5, right: 22, left: 22),
+            child: CircleAvatar(
+              backgroundImage: AssetImage(
+                model.img,
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                    radius: 15,
-                    backgroundColor: Color.fromARGB(255, 231, 225, 225),
-                    child: Icon(
-                      Icons.favorite_border_sharp,
-                      size: 18,
-                    )),
-              )
-            ],
+              radius: 35,
+            ),
           ),
-          const SizedBox(
-            height: 3,
+          Text(
+            model.categoryName,
+            style: const TextStyle(
+                fontSize: 17, fontWeight: FontWeight.w400, color: Colors.black),
           ),
-          Column(
+          index == ShopCubit.get(context).homeScreenIndex
+              ? Container(
+                  width: 35,
+                  height: 3,
+                  color: PrimaryColour,
+                )
+              : Container()
+        ],
+      ),
+    );
+
+Widget categoryItemBuilder(List<CategoriesModel> categories, context) =>
+    ListView.builder(
+      itemBuilder: (context, index) =>
+          categoryItem(categories[index], index, context),
+      itemCount: categories.length,
+      physics: const BouncingScrollPhysics(),
+      scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
+    );
+
+Widget productItem(ItemComponentModel model,context) => InkWell(
+      onTap: model.onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                model.categoryName,
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-              Text(
-                'Made by: ${model.ownerName}',
-                style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black),
-              ),
-              Text(
-                model.locaion,
-                style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.black),
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 140,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(model.categoryImg),
+                            fit: BoxFit.fill),
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
+                  InkWell(
+                    onTap:(){
+                      ShopCubit.get(context).changeFavState(model);
+                      },
+                    child: Padding(
+                      padding: EdgeInsets.all(8),
+                      child: CircleAvatar(
+                          radius: 15,
+                          backgroundColor: Color.fromARGB(255, 231, 225, 225),
+                          child: Icon(
+                            Icons.favorite,
+                            color :model.isFav?
+                                Colors.red:Colors.grey
+
+                            ,
+                            size: 18,
+                          )),
+                    ),
+                  )
+                ],
               ),
               const SizedBox(
-                height: 15,
+                height: 3,
               ),
-              Text(
-                'EGP ${model.price} ',
-                style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    model.categoryName,
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  Text(
+                    'Made by: ${model.ownerName}',
+                    style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black),
+                  ),
+                  Text(
+                    model.locaion,
+                    style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'EGP ${model.price} ',
+                    style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ]),
-  ),
-);
+            ]),
+      ),
+    );

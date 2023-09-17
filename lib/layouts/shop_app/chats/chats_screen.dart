@@ -4,6 +4,6 @@ class ChatsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("products"));
+    return Center(child: Text("chats"));
   }
 }

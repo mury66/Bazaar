@@ -3,6 +3,7 @@ class ItemComponentModel {
   String categoryImg;
   String ownerName;
   String locaion;
+  bool isFav = false;
   double price;
   Function() onTap;
   ItemComponentModel(

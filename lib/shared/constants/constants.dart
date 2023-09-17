@@ -4,8 +4,7 @@ import 'package:task/shared/components/components.dart';
 import '../../models/item_model/item_componet_model.dart';
 import '../../network/local/cache_helper.dart';
 
-void SignOut(context)
-{
+void SignOut(context) {
   CacheHelper.removeData(key: "token").then((value)
   {
     if(value)

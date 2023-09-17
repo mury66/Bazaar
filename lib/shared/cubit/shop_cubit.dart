@@ -1,11 +1,12 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/shared/cubit/Shop_states.dart';
 import '../../layouts/shop_app/account/account_screen.dart';
-import '../../layouts/shop_app/cart/favourites_screen.dart';
+import '../../layouts/shop_app/cart/cart_screen.dart';
 import '../../layouts/shop_app/chats/chats_screen.dart';
 import '../../layouts/shop_app/home_screen/home_screen.dart';
-import '../../layouts/shop_app/sell/sell_screen.dart';
+import '../../models/item_model/item_componet_model.dart';
 import '../../network/remote/dio_helper.dart';
 
 
@@ -19,23 +20,29 @@ class ShopCubit extends Cubit<ShopStates> {
 
   int homeScreenIndex = 0;
 
-  List<BottomNavigationBarItem> bottomItems =const [
-    BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home_outlined, size: 23,),
-        activeIcon: Icon(Icons.home)),
-    BottomNavigationBarItem(label: 'Chat', icon: Icon(Icons.messenger_outline, size: 23,),
-        activeIcon: Icon(Icons.message_rounded)),
-    BottomNavigationBarItem(label: 'Sell', icon: Icon(Icons.attach_money_rounded,size: 23,),
-        activeIcon: Icon(Icons.attach_money_rounded)),
-    BottomNavigationBarItem(label: 'Cart', icon: Icon(Icons.local_grocery_store_outlined,size:23,),
-        activeIcon: Icon(Icons.local_grocery_store)),
-    BottomNavigationBarItem(label: 'Account', icon: Icon(Icons.account_circle_outlined,size: 23),
-        activeIcon: Icon(Icons.account_circle_rounded)),
+  List<IconData> bottomNavIcons = [
+    Icons.home,
+    Icons.message_rounded,
+    Icons.shopping_cart,
+    Icons.account_circle_rounded,
   ];
+
+  // List<BottomNavigationBarItem> bottomItems =const [
+  //   BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home_outlined, size: 23,),
+  //       activeIcon: Icon(Icons.home)),
+  //   BottomNavigationBarItem(label: 'Chat', icon: Icon(Icons.messenger_outline, size: 23,),
+  //       activeIcon: Icon(Icons.message_rounded)),
+  //   BottomNavigationBarItem(label: 'Sell', icon: Icon(Icons.attach_money_rounded,size: 23,),
+  //       activeIcon: Icon(Icons.attach_money_rounded)),
+  //   BottomNavigationBarItem(label: 'Cart', icon: Icon(Icons.local_grocery_store_outlined,size:23,),
+  //       activeIcon: Icon(Icons.local_grocery_store)),
+  //   BottomNavigationBarItem(label: 'Account', icon: Icon(Icons.account_circle_outlined,size: 23),
+  //       activeIcon: Icon(Icons.account_circle_rounded)),
+  // ];
 
   List<Widget> bottomScreens = const [
     HomeScreen(),
     ChatsScreen(),
-    SellScreen(),
     CartScreen(),
     Account_Screen(),
   ];
@@ -50,6 +57,11 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(ShopChangeCatState());
   }
 
+  void changeFavState(ItemComponentModel model){
+    model.isFav=!model.isFav;
+    emit(ChangefavState());
+
+  }
   void getSearch(String value){
       // emit(NewsGetSearchLoadingState());
       DioHelper.getData(url: "v2/everything", query: {

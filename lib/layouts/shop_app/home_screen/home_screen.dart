@@ -48,7 +48,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ];
 
-          TextEditingController searchController = TextEditingController();
 
           var list;
 
@@ -57,26 +56,15 @@ class HomeScreen extends StatelessWidget {
           cubit.homeScreenIndex == 2 ? list = accessories : list = sculpture ;
 
           return Scaffold(
-            appBar: defaultAppBar(context),
             body: SingleChildScrollView(
               child: Column(
               children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: defaultinputform(
-                    submitted:(value){},
-                    type: TextInputType.text,
-                    prefix: Icons.search,
-                    controller: searchController,
-                    hint: "search"
-                ),
-              ),
               SizedBox(height: 150, child: categoryItemBuilder(category,context)),
               GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 10,crossAxisSpacing: 10, mainAxisExtent: 250),
               itemBuilder: (context, index) =>
-              productItem(list[index]),
+              productItem(list[index],context),
               itemCount: list.length,
               scrollDirection: Axis.vertical,
               physics: const NeverScrollableScrollPhysics(),
