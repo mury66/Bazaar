@@ -144,7 +144,7 @@ class LogInScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.facebook)),
+                              child: Icon(EvaIcons.facebook,color: Colors.indigo,)),
                           SizedBox(width: 15,),
                           Container(
                               width: 63,
@@ -154,7 +154,7 @@ class LogInScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.google)),
+                              child: Icon(EvaIcons.google,color: Colors.orange)),
                         ],
                       ),
                       SizedBox(height: 40,),

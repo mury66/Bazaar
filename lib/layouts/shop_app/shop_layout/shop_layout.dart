@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:task/shared/cubit/Shop_states.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 import 'package:flutter/services.dart';

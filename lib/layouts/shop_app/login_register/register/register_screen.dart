@@ -33,7 +33,7 @@ class RegisterScreen extends StatelessWidget {
             showSnackBar(context: context,message: state.LoginModel.message, title: "Registered successfully", type: ContentType.success);
             CacheHelper.saveData(key: "token", value: state.LoginModel.data.token)
                 .then((value){
-              navigateAndFinish(context, const ShopLayout());
+              navigateAndFinish(context, ShopLayout());
             });
 
           }
@@ -171,7 +171,7 @@ class RegisterScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.facebook)),
+                              child: Icon(EvaIcons.facebook,color: Colors.indigo)),
                           SizedBox(width: 15,),
                           Container(
                               width: 63,
@@ -181,7 +181,7 @@ class RegisterScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.google)),
+                              child: Icon(EvaIcons.google,color: Colors.orange)),
                         ],
                       ),
                       const SizedBox(
