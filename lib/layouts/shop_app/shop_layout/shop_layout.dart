@@ -37,7 +37,7 @@ class ShopLayout extends StatelessWidget {
                   children: [
                     SizedBox(height: size.width * .014),
                     Icon(cubit.bottomNavIcons[index],
-                        size: size.width * .076, color: PrimaryColour),
+                        size: size.width * .076, color: index!=cubit.current? Colors.grey: PrimaryColour),
                     AnimatedContainer(
                       duration: Duration(milliseconds: 1500),
                       curve: Curves.fastLinearToSlowEaseIn,
