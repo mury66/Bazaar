@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:task/models/item_model/item_componet_model.dart';
-import 'package:task/shared/details/favorite_icon.dart';
 import 'package:task/shared/details/rating_bar.dart';
 
+import '../cubit/shop_cubit.dart';
+
 // ignore: must_be_immutable
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
   ProductDetails({super.key, required this.model, required this.rate});
   ItemComponentModel model;
   double rate = 0;
+
+  @override
+  State<ProductDetails> createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,18 +39,36 @@ class ProductDetails extends StatelessWidget {
                   height: 200,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(model.categoryImg),
+                          image: AssetImage(widget.model.categoryImg),
                           fit: BoxFit.fill),
                       borderRadius: BorderRadius.circular(5)),
                 ),
-                const FavoriteIcon()
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap:(){
+                      setState(() {
+                        ShopCubit.get(context).changeFavState(widget.model,context);
+                      });
+                    }
+                    ,
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: const Color.fromARGB(255, 231, 225, 225),
+                      child: Icon(
+                        Icons.favorite,
+                          color :widget.model.isFav? Colors.red:Colors.grey
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
             const SizedBox(
               height: 12,
             ),
             Text(
-              '${model.categoryName}, Made by: ${model.ownerName}',
+              '${widget.model.categoryName}, Made by: ${widget.model.ownerName}',
               style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
@@ -53,14 +78,14 @@ class ProductDetails extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Location: ${model.locaion}',
+              'Location: ${widget.model.locaion}',
               style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.w400),
             ),
             Text(
-              'Publised at: ${model.publisedAt} ago',
+              'Publised at: ${widget.model.publisedAt} ago',
               style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
@@ -68,7 +93,7 @@ class ProductDetails extends StatelessWidget {
             ),
             //Fabric thread, Wooden board, Nails
             Text(
-              'Materials: ${model.material}',
+              'Materials: ${widget.model.material}',
               style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
@@ -90,14 +115,14 @@ class ProductDetails extends StatelessWidget {
                 const SizedBox(
                   width: 28,
                 ),
-                RatingBar(rating: rate),
+                RatingBar(rating: widget.rate),
               ],
             ),
             const SizedBox(
               height: 14,
             ),
             Text(
-              'EGP ${model.price}',
+              'EGP ${widget.model.price}',
               style: const TextStyle(
                   fontSize: 22, color: Colors.red, fontWeight: FontWeight.bold),
             ),
@@ -111,10 +136,7 @@ class ProductDetails extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    duration: Duration(seconds: 1),
-                    content: Text('Sucessfuly Added Your to cart'),
-                    backgroundColor: Colors.green));
+                  ShopCubit.get(context).changeCartState(context);
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red, fixedSize: const Size(340, 50)),

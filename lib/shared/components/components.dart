@@ -14,18 +14,18 @@ import '../../models/item_model/item_componet_model.dart';
 import '../themes/themes.dart';
 
 AppBar defaultAppBar(BuildContext context) => AppBar(
-      elevation: 0,
+  elevation: 0,
       title: const Center(child: Text("6th of october")),
       leading: MaterialButton(
-          child: const Image(
-              width: 100, image: AssetImage("assets/images/bazaar.png")),
+          child:
+              Image(width: 100, image: AssetImage("assets/images/bazaar.png")),
           onPressed: () {
-            navigateAndFinish(context, const ShopLayout());
+            navigateAndFinish(context, ShopLayout());
           }),
       actions: [
         IconButton(
             onPressed: () {
-              navigateTo(context, const SearchScreen());
+              navigateTo(context, SearchScreen());
             },
             icon: const Icon(
               Icons.search,
@@ -109,7 +109,7 @@ Widget defaultinputform({
               ),
             ),
             border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white),
+              borderSide: BorderSide(color: Colors.white),
               borderRadius: BorderRadius.circular(12),
             ),
             focusedBorder: OutlineInputBorder(
@@ -138,6 +138,24 @@ Widget defaultButton(
           style: const TextStyle(fontSize: 22, color: Colors.white),
         ),
       ),
+    );
+
+Widget socialMediaIcons({
+  required IconData icon,
+  required Color iconColor,
+  required Color backGroundColor,
+  required Function()? tapped})=>
+    InkWell(
+      onTap: tapped,
+      child: Container(
+          width: 63,
+          height: 63,
+          decoration: BoxDecoration(
+              color: backGroundColor,
+              borderRadius: BorderRadius.circular(12)
+
+          ),
+          child: Icon(icon,color:iconColor,size:40,)),
     );
 
 Widget categoryItem(CategoriesModel model, index, context) => InkWell(
@@ -180,7 +198,7 @@ Widget categoryItemBuilder(List<CategoriesModel> categories, context) =>
       shrinkWrap: true,
     );
 
-Widget productItem(ItemComponentModel model, context) => InkWell(
+Widget productItem(ItemComponentModel model,context) => InkWell(
       onTap: model.onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -189,13 +207,19 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: double.infinity,
-                height: 140,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(model.categoryImg), fit: BoxFit.fill),
-                    borderRadius: BorderRadius.circular(5)),
+              Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 140,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(model.categoryImg),
+                            fit: BoxFit.fill),
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 3,
@@ -239,3 +263,5 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
             ]),
       ),
     );
+
+

@@ -4,6 +4,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:task/layouts/shop_app/login_register/register/register_cubit/cubit.dart';
 import 'package:task/layouts/shop_app/login_register/register/register_cubit/states.dart';
 import '../../../../network/local/cache_helper.dart';
@@ -29,8 +30,7 @@ class RegisterScreen extends StatelessWidget {
         {
           if(state.LoginModel.status)
           {
-            print("register");
-            showSnackBar(context: context,message: state.LoginModel.message, title: "Registered successfully", type: ContentType.success);
+            showSnackBar(context: context,message: state.LoginModel.message, title: "Welcome", type: ContentType.success);
             CacheHelper.saveData(key: "token", value: state.LoginModel.data.token)
                 .then((value){
               navigateAndFinish(context, ShopLayout());
@@ -46,6 +46,12 @@ class RegisterScreen extends StatelessWidget {
                 type: ContentType.failure
             );
           }
+        }
+        else if(state is RegisterErrorState) {
+          showSnackBar(context: context,
+              message: "can't register at the moment",
+              title: "error",
+              type: ContentType.warning);
         }
       },
       builder: (context,state)
@@ -163,26 +169,20 @@ class RegisterScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                              width: 63,
-                              height: 63,
-                              decoration: BoxDecoration(
-                                  //color: Color.fromARGB(158, 213, 213, 213),
-                                  color: Colors.indigo,
-                                  borderRadius: BorderRadius.circular(12)
-
-                              ),
-                              child: Icon(EvaIcons.facebook,color: Colors.white)),
-                          SizedBox(width: 15,),
-                          Container(
-                              width: 63,
-                              height: 63,
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(12)
-
-                              ),
-                              child: Icon(EvaIcons.google,color: Colors.white)),
+                          socialMediaIcons(
+                              tapped: (){},
+                              icon: EvaIcons.facebook,
+                              backGroundColor: HexColor("#E1E1E1"),
+                              iconColor: Colors.indigo
+                          ),
+                          const SizedBox(
+                            width: 15,),
+                          socialMediaIcons(
+                              tapped: (){},
+                              icon: EvaIcons.google,
+                              backGroundColor: HexColor("#E1E1E1"),
+                              iconColor: Colors.redAccent
+                          ),
                         ],
                       ),
                       const SizedBox(

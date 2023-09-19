@@ -3,12 +3,15 @@ import 'package:task/shared/components/components.dart';
 
 import '../../models/item_model/item_componet_model.dart';
 import '../../network/local/cache_helper.dart';
+import '../cubit/shop_cubit.dart';
 
 void SignOut(context) {
-  CacheHelper.removeData(key: "token").then((value) {
-    if (value) {
-      navigateAndFinish(context, LogInScreen());
-    }
+  CacheHelper.removeData(key: "token").then((value)
+  {
+    if(value)
+      {
+        navigateAndFinish(context,LogInScreen());
+      }
   });
 }
 
@@ -21,7 +24,9 @@ List<ItemComponentModel> paint = [
       publisedAt: '5 days',
       price: 135,
       material: 'Colors, Paper, Bord',
-      onTap: () {}),
+      onTap: () {
+
+      }),
   ItemComponentModel(
     categoryImg: 'assets/images/painting/monalisa.jpg',
     categoryName: 'Monalisa ',

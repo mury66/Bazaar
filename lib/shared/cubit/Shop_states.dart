@@ -6,4 +6,6 @@ class ShopChangeBottomNavBarState extends ShopStates{}
 
 class ShopChangeCatState extends ShopStates{}
 
-class ChangefavState extends ShopStates{}
+class ChangeFavState extends ShopStates{}
+
+class ChangeCartState extends ShopStates{}

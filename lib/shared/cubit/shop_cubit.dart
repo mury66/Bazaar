@@ -1,4 +1,3 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/shared/cubit/Shop_states.dart';
@@ -27,19 +26,6 @@ class ShopCubit extends Cubit<ShopStates> {
     Icons.account_circle_rounded,
   ];
 
-  // List<BottomNavigationBarItem> bottomItems =const [
-  //   BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home_outlined, size: 23,),
-  //       activeIcon: Icon(Icons.home)),
-  //   BottomNavigationBarItem(label: 'Chat', icon: Icon(Icons.messenger_outline, size: 23,),
-  //       activeIcon: Icon(Icons.message_rounded)),
-  //   BottomNavigationBarItem(label: 'Sell', icon: Icon(Icons.attach_money_rounded,size: 23,),
-  //       activeIcon: Icon(Icons.attach_money_rounded)),
-  //   BottomNavigationBarItem(label: 'Cart', icon: Icon(Icons.local_grocery_store_outlined,size:23,),
-  //       activeIcon: Icon(Icons.local_grocery_store)),
-  //   BottomNavigationBarItem(label: 'Account', icon: Icon(Icons.account_circle_outlined,size: 23),
-  //       activeIcon: Icon(Icons.account_circle_rounded)),
-  // ];
-
   List<Widget> bottomScreens = const [
     HomeScreen(),
     ChatsScreen(),
@@ -47,22 +33,37 @@ class ShopCubit extends Cubit<ShopStates> {
     Account_Screen(),
   ];
 
-  void changeIndex(int index){
+  void changeIndex(int index) {
     current = index;
     emit(ShopChangeBottomNavBarState());
   }
 
-  void changeCats(int index){
+  void changeCats(int index) {
     homeScreenIndex = index;
     emit(ShopChangeCatState());
   }
 
-  void changeFavState(ItemComponentModel model){
-    model.isFav=!model.isFav;
-    emit(ChangefavState());
-
+  void changeFavState(ItemComponentModel model,context) {
+    model.isFav = !model.isFav;
+    model.isFav
+        ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text('Added to your favorites'),
+        backgroundColor: Colors.green))
+        : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text('Removed from your favorites'),
+        backgroundColor: Colors.red));
+    emit(ChangeFavState());
   }
-  void getSearch(String value){
+    void changeCartState(context) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          duration: Duration(seconds: 1),
+          content: Text('Sucessfuly Added Your to cart'),
+          backgroundColor: Colors.green));
+      emit(ChangeCartState());
+    }
+    void getSearch(String value) {
       // emit(NewsGetSearchLoadingState());
       DioHelper.getData(url: "v2/everything", query: {
         "q": value,
@@ -73,5 +74,5 @@ class ShopCubit extends Cubit<ShopStates> {
         print(error.toString());
         // emit(NewsGetSearchErrorState(error.toString()));
       });
+    }
   }
-}
