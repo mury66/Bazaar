@@ -2,7 +2,7 @@
     package="com.example.task">
    <application
         android:enableOnBackInvokedCallback="true"
-        android:label="task"
+        android:label="Bazaar"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
