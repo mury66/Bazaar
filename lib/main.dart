@@ -59,6 +59,7 @@ class MyApp extends StatelessWidget {
           listener: (BuildContext context, state) => {},
           builder: (BuildContext context, state) {
             {
+              // ignore: unused_local_variable
               var cubit = AppCubit.get(context);
               return MaterialApp(
                 title: 'Flutter Demo',

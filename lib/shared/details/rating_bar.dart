@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RatingBar extends StatelessWidget {
   final double rating;
   final int starCount = 5;
-  final int size = 25;
+  final int size = 23;
 
   const RatingBar({
     super.key,

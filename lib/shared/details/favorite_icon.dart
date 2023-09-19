@@ -4,6 +4,7 @@ class FavoriteIcon extends StatefulWidget {
   const FavoriteIcon({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FavoriteIconState createState() => _FavoriteIconState();
 }
 
@@ -13,17 +14,15 @@ class _FavoriteIconState extends State<FavoriteIcon> {
   void toggleFavorite() {
     setState(() {
       isFavorite = !isFavorite;
-      if (isFavorite == true) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            duration: Duration(seconds: 1),
-            content: Text('Added to your favorites'),
-            backgroundColor: Colors.green));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            duration: Duration(seconds: 1),
-            content: Text('Removed from your favorites'),
-            backgroundColor: Colors.red));
-      }
+      isFavorite
+          ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              duration: Duration(seconds: 1),
+              content: Text('Added to your favorites'),
+              backgroundColor: Colors.green))
+          : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              duration: Duration(seconds: 1),
+              content: Text('Removed from your favorites'),
+              backgroundColor: Colors.red));
     });
   }
 

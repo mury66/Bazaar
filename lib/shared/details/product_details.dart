@@ -25,7 +25,7 @@ class ProductDetails extends StatelessWidget {
               alignment: Alignment.topRight,
               children: [
                 Container(
-                  width: 365,
+                  width: double.infinity,
                   height: 200,
                   decoration: BoxDecoration(
                       image: const DecorationImage(
@@ -47,7 +47,7 @@ class ProductDetails extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(
-              height: 8,
+              height: 10,
             ),
             const Text(
               'Location: Maade - Cairo',
@@ -59,16 +59,35 @@ class ProductDetails extends StatelessWidget {
             const Text(
               'Publised at: 5 days ao',
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.w400),
             ),
             const Text(
-              'Materials: (Fabric thread, Wooden board, Nails)',
+              'Materials: Fabric thread, Wooden board, Nails',
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.w400),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Product Rate',
+                  style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600),
+                ),
+                SizedBox(
+                  width: 28,
+                ),
+                RatingBar(rating: 4.5),
+              ],
             ),
             const SizedBox(
               height: 14,
@@ -76,10 +95,15 @@ class ProductDetails extends StatelessWidget {
             const Text(
               'EGP 49.99',
               style: TextStyle(
-                  fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold),
+                  fontSize: 22, color: Colors.red, fontWeight: FontWeight.bold),
+            ),
+            const Divider(
+              color: Colors.grey,
+              thickness: 0.8,
+              height: 24,
             ),
             const SizedBox(
-              height: 18,
+              height: 14,
             ),
             ElevatedButton(
               onPressed: () {
@@ -92,30 +116,6 @@ class ProductDetails extends StatelessWidget {
                   backgroundColor: Colors.red, fixedSize: const Size(340, 50)),
               child: const Text('Add to cart',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
-            ),
-            const Divider(
-              color: Colors.grey,
-              thickness: 0.8,
-              height: 28,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Product Rate',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600),
-                ),
-                SizedBox(
-                  width: 28,
-                ),
-                RatingBar(rating: 4.5),
-              ],
             ),
           ],
         ),
