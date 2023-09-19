@@ -14,18 +14,18 @@ import '../../models/item_model/item_componet_model.dart';
 import '../themes/themes.dart';
 
 AppBar defaultAppBar(BuildContext context) => AppBar(
-  elevation: 0,
+      elevation: 0,
       title: const Center(child: Text("6th of october")),
       leading: MaterialButton(
-          child:
-              Image(width: 100, image: AssetImage("assets/images/bazaar.png")),
+          child: const Image(
+              width: 100, image: AssetImage("assets/images/bazaar.png")),
           onPressed: () {
-            navigateAndFinish(context, ShopLayout());
+            navigateAndFinish(context, const ShopLayout());
           }),
       actions: [
         IconButton(
             onPressed: () {
-              navigateTo(context, SearchScreen());
+              navigateTo(context, const SearchScreen());
             },
             icon: const Icon(
               Icons.search,
@@ -109,7 +109,7 @@ Widget defaultinputform({
               ),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
+              borderSide: const BorderSide(color: Colors.white),
               borderRadius: BorderRadius.circular(12),
             ),
             focusedBorder: OutlineInputBorder(
@@ -180,7 +180,7 @@ Widget categoryItemBuilder(List<CategoriesModel> categories, context) =>
       shrinkWrap: true,
     );
 
-Widget productItem(ItemComponentModel model,context) => InkWell(
+Widget productItem(ItemComponentModel model, context) => InkWell(
       onTap: model.onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -189,38 +189,13 @@ Widget productItem(ItemComponentModel model,context) => InkWell(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 140,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(model.categoryImg),
-                            fit: BoxFit.fill),
-                        borderRadius: BorderRadius.circular(5)),
-                  ),
-                  InkWell(
-                    onTap:(){
-                      ShopCubit.get(context).changeFavState(model);
-                      },
-                    child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: CircleAvatar(
-                          radius: 15,
-                          backgroundColor: Color.fromARGB(255, 231, 225, 225),
-                          child: Icon(
-                            Icons.favorite,
-                            color :model.isFav?
-                                Colors.red:Colors.grey
-
-                            ,
-                            size: 18,
-                          )),
-                    ),
-                  )
-                ],
+              Container(
+                width: double.infinity,
+                height: 140,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(model.categoryImg), fit: BoxFit.fill),
+                    borderRadius: BorderRadius.circular(5)),
               ),
               const SizedBox(
                 height: 3,
