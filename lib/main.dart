@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
                 darkTheme: darkTheme,
                 themeMode: ThemeMode.light,
                 debugShowCheckedModeBanner: false,
-                home: const ShopLayout(),
+                home: startWidget,
               );
             }
           }),

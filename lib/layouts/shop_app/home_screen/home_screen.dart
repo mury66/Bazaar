@@ -1,3 +1,5 @@
+// ignore_for_file: missing_required_param
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/models/item_model/item_componet_model.dart';
@@ -20,258 +22,254 @@ class HomeScreen extends StatelessWidget {
 
         List<ItemComponentModel> crafts = [
           ItemComponentModel(
-              categoryName: 'Wall Tablo',
-              categoryImg: 'assets/images/walltablo.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: craft[0].categoryName,
+              categoryImg: craft[0].categoryImg,
+              locaion: craft[0].locaion,
+              ownerName: craft[0].ownerName,
+              price: craft[0].price,
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProductDetails(),
-                    ));
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: craft[0],
+                    rate: 3,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Wall Tablo 2',
-              categoryImg: 'assets/images/walltablo2.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
+              categoryName: craft[1].categoryName,
+              categoryImg: craft[1].categoryImg,
+              locaion: craft[1].locaion,
+              ownerName: craft[1].ownerName,
+              price: craft[1].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: craft[1],
+                    rate: 2,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Wall Tablo',
-              categoryImg: 'assets/images/walltablo.png',
-              locaion: 'Zayed - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: craft[2].categoryName,
+              categoryImg: craft[2].categoryImg,
+              locaion: craft[2].locaion,
+              ownerName: craft[2].ownerName,
+              price: craft[2].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: craft[2],
+                    rate: 5,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Wall Tablo 2',
-              categoryImg: 'assets/images/walltablo2.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
+              categoryName: craft[3].categoryName,
+              categoryImg: craft[3].categoryImg,
+              locaion: craft[3].locaion,
+              ownerName: craft[3].ownerName,
+              price: craft[3].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: craft[3],
+                    rate: 5,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Wall Tablo',
-              categoryImg: 'assets/images/walltablo.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Wall Tablo 2',
-              categoryImg: 'assets/images/walltablo2.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Wall Tablo',
-              categoryImg: 'assets/images/walltablo.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Wall Tablo 2',
-              categoryImg: 'assets/images/walltablo2.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
+              categoryName: craft[4].categoryName,
+              categoryImg: craft[4].categoryImg,
+              locaion: craft[4].locaion,
+              ownerName: craft[4].ownerName,
+              price: craft[4].price,
+              onTap: () {
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: craft[4],
+                    rate: 3,
+                  ),
+                );
+              }),
         ];
 
         List<ItemComponentModel> painting = [
           ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: paint[0].categoryName,
+              categoryImg: paint[0].categoryImg,
+              locaion: paint[0].locaion,
+              ownerName: paint[0].ownerName,
+              price: paint[0].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: paint[0],
+                    rate: 5,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
+              categoryName: paint[1].categoryName,
+              categoryImg: paint[1].categoryImg,
+              locaion: paint[1].locaion,
+              ownerName: paint[1].ownerName,
+              price: paint[1].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: paint[1],
+                    rate: 5,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: paint[2].categoryName,
+              categoryImg: paint[2].categoryImg,
+              locaion: paint[2].locaion,
+              ownerName: paint[2].ownerName,
+              price: paint[2].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: paint[2],
+                    rate: 3,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Painting',
-              categoryImg: 'assets/images/painting.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
+              categoryName: paint[3].categoryName,
+              categoryImg: paint[3].categoryImg,
+              locaion: paint[3].locaion,
+              ownerName: paint[3].ownerName,
+              price: paint[3].price,
+              onTap: () {
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: paint[3],
+                    rate: 4,
+                  ),
+                );
+              }),
         ];
-
         List<ItemComponentModel> accessories = [
           ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: accessory[0].categoryName,
+              categoryImg: accessory[0].categoryImg,
+              locaion: accessory[0].locaion,
+              ownerName: accessory[0].ownerName,
+              price: accessory[0].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: accessory[0],
+                    rate: 4,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
+              categoryName: accessory[1].categoryName,
+              categoryImg: accessory[1].categoryImg,
+              locaion: accessory[1].locaion,
+              ownerName: accessory[1].ownerName,
+              price: accessory[1].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: accessory[1],
+                    rate: 2,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: accessory[2].categoryName,
+              categoryImg: accessory[2].categoryImg,
+              locaion: accessory[2].locaion,
+              ownerName: accessory[2].ownerName,
+              price: accessory[2].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: accessory[2],
+                    rate: 3,
+                  ),
+                );
               }),
-          ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Accessories',
-              categoryImg: 'assets/images/accessories.png',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
         ];
-
         List<ItemComponentModel> sculpture = [
           ItemComponentModel(
-              categoryName: 'Sculpture',
-              categoryImg: 'assets/images/sculpture.jpg',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: sculptures[0].categoryName,
+              categoryImg: sculptures[0].categoryImg,
+              locaion: sculptures[0].locaion,
+              ownerName: sculptures[0].ownerName,
+              price: sculptures[0].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: sculptures[0],
+                    rate: 5,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Sculpture',
-              categoryImg: 'assets/images/sculpture.jpg',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
+              categoryName: sculptures[1].categoryName,
+              categoryImg: sculptures[1].categoryImg,
+              locaion: sculptures[1].locaion,
+              ownerName: sculptures[1].ownerName,
+              price: sculptures[1].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: sculptures[1],
+                    rate: 3,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Sculpture',
-              categoryImg: 'assets/images/sculpture.jpg',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
+              categoryName: sculptures[2].categoryName,
+              categoryImg: sculptures[2].categoryImg,
+              locaion: sculptures[2].locaion,
+              ownerName: sculptures[2].ownerName,
+              price: sculptures[2].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: sculptures[2],
+                    rate: 4,
+                  ),
+                );
               }),
           ItemComponentModel(
-              categoryName: 'Sculpture',
-              categoryImg: 'assets/images/sculpture.jpg',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
+              categoryName: sculptures[3].categoryName,
+              categoryImg: sculptures[3].categoryImg,
+              locaion: sculptures[3].locaion,
+              ownerName: sculptures[3].ownerName,
+              price: sculptures[3].price,
               onTap: () {
-                navigateTo(context, const ProductDetails());
+                navigateTo(
+                  context,
+                  ProductDetails(
+                    model: sculptures[3],
+                    rate: 3,
+                  ),
+                );
               }),
-          ItemComponentModel(
-              categoryName: 'Sculpture',
-              categoryImg: 'assets/images/sculpture.jpg',
-              locaion: 'Downtown - Cairo',
-              ownerName: 'Youssef',
-              price: 50.6,
-              onTap: () {}),
-          ItemComponentModel(
-              categoryName: 'Sculpture',
-              categoryImg: 'assets/images/sculpture.jpg',
-              locaion: 'Maadi - Cairo',
-              ownerName: 'Saif',
-              price: 45.99,
-              onTap: () {}),
         ];
-          
+
         List<CategoriesModel> category = [
           CategoriesModel(
               categoryName: 'Craft',

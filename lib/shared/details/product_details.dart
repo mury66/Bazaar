@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:task/models/item_model/item_componet_model.dart';
 import 'package:task/shared/details/favorite_icon.dart';
 import 'package:task/shared/details/rating_bar.dart';
 
+// ignore: must_be_immutable
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
-
+  ProductDetails({super.key, required this.model, required this.rate});
+  ItemComponentModel model;
+  double rate = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +31,9 @@ class ProductDetails extends StatelessWidget {
                   width: double.infinity,
                   height: 200,
                   decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: AssetImage('images/walltablo.png'),
-                          fit: BoxFit.cover),
+                      image: DecorationImage(
+                          image: AssetImage(model.categoryImg),
+                          fit: BoxFit.fill),
                       borderRadius: BorderRadius.circular(5)),
                 ),
                 const FavoriteIcon()
@@ -39,9 +42,9 @@ class ProductDetails extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            const Text(
-              'wall tablo, Made by: thread',
-              style: TextStyle(
+            Text(
+              '${model.categoryName}, Made by: ${model.ownerName}',
+              style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
@@ -49,23 +52,24 @@ class ProductDetails extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              'Location: Maade - Cairo',
-              style: TextStyle(
+            Text(
+              'Location: ${model.locaion}',
+              style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.w400),
             ),
-            const Text(
-              'Publised at: 5 days ao',
-              style: TextStyle(
+            Text(
+              'Publised at: ${model.publisedAt} ago',
+              style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.w400),
             ),
-            const Text(
-              'Materials: Fabric thread, Wooden board, Nails',
-              style: TextStyle(
+            //Fabric thread, Wooden board, Nails
+            Text(
+              'Materials: ${model.material}',
+              style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black,
                   fontWeight: FontWeight.w400),
@@ -73,28 +77,28 @@ class ProductDetails extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Product Rate',
                   style: TextStyle(
                       fontSize: 19,
                       color: Colors.black,
                       fontWeight: FontWeight.w600),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 28,
                 ),
-                RatingBar(rating: 4.5),
+                RatingBar(rating: rate),
               ],
             ),
             const SizedBox(
               height: 14,
             ),
-            const Text(
-              'EGP 49.99',
-              style: TextStyle(
+            Text(
+              'EGP ${model.price}',
+              style: const TextStyle(
                   fontSize: 22, color: Colors.red, fontWeight: FontWeight.bold),
             ),
             const Divider(
