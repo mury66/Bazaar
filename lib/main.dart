@@ -18,51 +18,43 @@ import 'layouts/shop_app/login_register/log_in/login_screen.dart';
 import 'layouts/shop_app/login_register/register/register_cubit/cubit.dart';
 import 'network/local/cache_helper.dart';
 
-  void main() async
-  {
-    WidgetsFlutterBinding.ensureInitialized();
-    Bloc.observer = const SimpleBlocObserver();
-    DioHelper.init();
-    await CacheHelper.init();
-    String? token = CacheHelper.getData(key: "token");
-    bool? onBoarding = CacheHelper.getData(key: "onBoarding");
-    late Widget startWidget;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = const SimpleBlocObserver();
+  DioHelper.init();
+  await CacheHelper.init();
+  String? token = CacheHelper.getData(key: "token");
+  bool? onBoarding = CacheHelper.getData(key: "onBoarding");
+  late Widget startWidget;
 
-    if(onBoarding!=null)
-      {
-        if(token!=null)
-          {
-            startWidget = ShopLayout();
-          }
-        else
-          {
-            startWidget = LogInScreen();
+  if (onBoarding != null) {
+    if (token != null) {
+      startWidget = const ShopLayout();
+    } else {
+      startWidget = LogInScreen();
+    }
+  } else {
+    startWidget = OnBoardingScreen();
+  }
 
-          }
-      }
-    else
-      {
-        startWidget = OnBoardingScreen();
-      }
-
-    runApp(MyApp(startWidget!));
+  runApp(MyApp(startWidget));
 }
 
 class MyApp extends StatelessWidget {
-
   final Widget startWidget;
 
-  const MyApp(this.startWidget);
+  const MyApp(this.startWidget, {super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>RegisterCubit(RegisterInitialState())),
-        BlocProvider(create: (context)=>LoginCubit(LoginInitialState())),
-        BlocProvider(create: (context)=>ShopCubit(ShopInitialState())),
-        BlocProvider(create: (context)=>AppCubit(AppInitialState()))
+        BlocProvider(
+            create: (context) => RegisterCubit(RegisterInitialState())),
+        BlocProvider(create: (context) => LoginCubit(LoginInitialState())),
+        BlocProvider(create: (context) => ShopCubit(ShopInitialState())),
+        BlocProvider(create: (context) => AppCubit(AppInitialState()))
       ],
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (BuildContext context, state)=>{} ,
@@ -87,7 +79,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -95,6 +86,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return const Placeholder();
   }
 }
