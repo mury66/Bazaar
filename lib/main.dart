@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/layouts/shop_app/login_register/register/register_cubit/states.dart';
 import 'package:task/layouts/shop_app/on_boarding/on_boarding.dart';
 import 'package:task/layouts/shop_app/shop_layout/shop_layout.dart';
+import 'package:task/layouts/shop_app/splash_screen/splash_screen.dart';
 import 'package:task/network/remote/dio_helper.dart';
 import 'package:task/shared/blocObserver.dart';
 import 'package:task/shared/cubit/Appcubit.dart';
@@ -55,22 +56,22 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ShopCubit(ShopInitialState())),
         BlocProvider(create: (context) => AppCubit(AppInitialState()))
       ],
-      child: BlocConsumer<AppCubit, AppStates>(
-          listener: (BuildContext context, state) => {},
-          builder: (BuildContext context, state) {
-            {
-              // ignore: unused_local_variable
-              var cubit = AppCubit.get(context);
-              return MaterialApp(
-                title: 'Flutter Demo',
-                theme: lightTheme,
-                darkTheme: darkTheme,
-                themeMode: ThemeMode.light,
-                debugShowCheckedModeBanner: false,
-                home: startWidget,
-              );
-            }
-          }),
+      child: BlocConsumer<AppCubit,AppStates>(
+        listener: (BuildContext context, state)=>{} ,
+        builder: (BuildContext context, state) {
+          {
+            var cubit = AppCubit.get(context);
+            return MaterialApp(
+          title: 'Flutter Demo',
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode:ThemeMode.light,
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen(startWidget: startWidget),
+          );
+        }
+        }
+      ),
     );
   }
 }

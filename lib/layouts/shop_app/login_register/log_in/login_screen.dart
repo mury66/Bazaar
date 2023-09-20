@@ -126,7 +126,7 @@ class LogInScreen extends StatelessWidget {
                       ,const SizedBox(
                         height: 60,),
                       const Text(
-                          "───────────  or Sign In With  ───────────",
+                          "───────  or Sign In With  ───────",
                           style: TextStyle(
                           fontSize: 15,
                       ),
@@ -140,21 +140,22 @@ class LogInScreen extends StatelessWidget {
                               width: 63,
                               height: 63,
                               decoration: BoxDecoration(
-                              color: Color.fromARGB(158, 213, 213, 213),
-                                borderRadius: BorderRadius.circular(12)
+                                //color: Color.fromARGB(158, 213, 213, 213),
+                                  color: Colors.indigo,
+                                  borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.facebook,color: Colors.indigo,)),
+                              child: Icon(EvaIcons.facebook,color: Colors.white)),
                           SizedBox(width: 15,),
                           Container(
                               width: 63,
                               height: 63,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(158, 213, 213, 213),
+                                  color: Colors.red,
                                   borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.google,color: Colors.orange)),
+                              child: Icon(EvaIcons.google,color: Colors.white)),
                         ],
                       ),
                       SizedBox(height: 40,),

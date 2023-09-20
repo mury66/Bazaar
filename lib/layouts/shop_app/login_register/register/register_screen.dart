@@ -153,7 +153,7 @@ class RegisterScreen extends StatelessWidget {
                       const SizedBox(
                         height: 60,),
                       const Text(
-                        "──────────  or Sign up With  ──────────",
+                        "──────  or Sign up With  ──────",
                         style: TextStyle(
                           fontSize: 15,
                         ),
@@ -167,21 +167,22 @@ class RegisterScreen extends StatelessWidget {
                               width: 63,
                               height: 63,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(158, 213, 213, 213),
+                                  //color: Color.fromARGB(158, 213, 213, 213),
+                                  color: Colors.indigo,
                                   borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.facebook,color: Colors.indigo)),
+                              child: Icon(EvaIcons.facebook,color: Colors.white)),
                           SizedBox(width: 15,),
                           Container(
                               width: 63,
                               height: 63,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(158, 213, 213, 213),
+                                  color: Colors.red,
                                   borderRadius: BorderRadius.circular(12)
 
                               ),
-                              child: Icon(EvaIcons.google,color: Colors.orange)),
+                              child: Icon(EvaIcons.google,color: Colors.white)),
                         ],
                       ),
                       const SizedBox(
