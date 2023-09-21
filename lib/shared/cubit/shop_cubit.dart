@@ -8,10 +8,8 @@ import '../../layouts/shop_app/home_screen/home_screen.dart';
 import '../../models/item_model/item_componet_model.dart';
 import '../../network/remote/dio_helper.dart';
 
-
 class ShopCubit extends Cubit<ShopStates> {
   ShopCubit(super.initialState);
-
 
   static ShopCubit get(context) => BlocProvider.of(context);
 
@@ -43,36 +41,39 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(ShopChangeCatState());
   }
 
-  void changeFavState(ItemComponentModel model,context) {
+  void changeFavState(ItemComponentModel model, context) {
     model.isFav = !model.isFav;
     model.isFav
         ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        duration: Duration(seconds: 1),
-        content: Text('Added to your favorites'),
-        backgroundColor: Colors.green))
+            duration: Duration(seconds: 1),
+            content: Text('Added to your favorites'),
+            backgroundColor: Colors.green))
         : ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        duration: Duration(seconds: 1),
-        content: Text('Removed from your favorites'),
-        backgroundColor: Colors.red));
+            duration: Duration(seconds: 1),
+            content: Text('Removed from your favorites'),
+            backgroundColor: Colors.red));
     emit(ChangeFavState());
   }
-    void changeCartState(context) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          duration: Duration(seconds: 1),
-          content: Text('Sucessfuly Added Your to cart'),
-          backgroundColor: Colors.green));
-      emit(ChangeCartState());
-    }
-    void getSearch(String value) {
-      // emit(NewsGetSearchLoadingState());
-      DioHelper.getData(url: "v2/everything", query: {
-        "q": value,
-        "apiKey": "099e9c9aaac14711aefccd39ade69a28",
-      }).then((value) {
-        // emit(NewsGetSearchSuccessState());
-      }).catchError((error) {
-        print(error.toString());
-        // emit(NewsGetSearchErrorState(error.toString()));
-      });
-    }
+
+  void changeCartState({required context, required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text(text),
+        backgroundColor: Colors.green));
+    emit(ChangeCartState());
   }
+
+
+  void getSearch(String value) {
+    // emit(NewsGetSearchLoadingState());
+    DioHelper.getData(url: "v2/everything", query: {
+      "q": value,
+      "apiKey": "099e9c9aaac14711aefccd39ade69a28",
+    }).then((value) {
+      // emit(NewsGetSearchSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      // emit(NewsGetSearchErrorState(error.toString()));
+    });
+  }
+}

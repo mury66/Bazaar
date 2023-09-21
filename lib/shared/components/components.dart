@@ -34,6 +34,18 @@ AppBar defaultAppBar(BuildContext context) => AppBar(
       ],
     );
 
+Widget textField(
+    {required context, required String hintText, required String label}) {
+  TextField(
+    decoration: InputDecoration(
+        alignLabelWithHint: true,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        hintText: hintText,
+        label: Text(label)),
+  );
+  return textField(context: context, hintText: hintText, label: label);
+}
+
 void navigateTo(context, widget) =>
     Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
 
