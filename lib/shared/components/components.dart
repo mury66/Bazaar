@@ -14,18 +14,18 @@ import '../../models/item_model/item_componet_model.dart';
 import '../themes/themes.dart';
 
 AppBar defaultAppBar(BuildContext context) => AppBar(
-  elevation: 0,
+      elevation: 0,
       title: const Center(child: Text("6th of october")),
       leading: MaterialButton(
-          child:
-              Image(width: 100, image: AssetImage("assets/images/bazaar.png")),
+          child: const Image(
+              width: 100, image: AssetImage("assets/images/bazaar.png")),
           onPressed: () {
-            navigateAndFinish(context, ShopLayout());
+            navigateAndFinish(context, const ShopLayout());
           }),
       actions: [
         IconButton(
             onPressed: () {
-              navigateTo(context, SearchScreen());
+              navigateTo(context, const SearchScreen());
             },
             icon: const Icon(
               Icons.search,
@@ -109,7 +109,7 @@ Widget defaultinputform({
               ),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
+              borderSide: const BorderSide(color: Colors.white),
               borderRadius: BorderRadius.circular(12),
             ),
             focusedBorder: OutlineInputBorder(
@@ -140,22 +140,23 @@ Widget defaultButton(
       ),
     );
 
-Widget socialMediaIcons({
-  required IconData icon,
-  required Color iconColor,
-  required Color backGroundColor,
-  required Function()? tapped})=>
+Widget socialMediaIcons(
+        {required IconData icon,
+        required Color iconColor,
+        required Color backGroundColor,
+        required Function()? tapped}) =>
     InkWell(
       onTap: tapped,
       child: Container(
           width: 63,
           height: 63,
           decoration: BoxDecoration(
-              color: backGroundColor,
-              borderRadius: BorderRadius.circular(12)
-
-          ),
-          child: Icon(icon,color:iconColor,size:40,)),
+              color: backGroundColor, borderRadius: BorderRadius.circular(12)),
+          child: Icon(
+            icon,
+            color: iconColor,
+            size: 40,
+          )),
     );
 
 Widget categoryItem(CategoriesModel model, index, context) => InkWell(
@@ -198,70 +199,74 @@ Widget categoryItemBuilder(List<CategoriesModel> categories, context) =>
       shrinkWrap: true,
     );
 
-Widget productItem(ItemComponentModel model,context) => InkWell(
+Widget productItem(ItemComponentModel model, context) => InkWell(
       onTap: model.onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 140,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(model.categoryImg),
-                            fit: BoxFit.fill),
-                        borderRadius: BorderRadius.circular(5)),
-                  ),
-                ],
+        child: Container(
+          width: double.infinity,
+          height: 250,
+          // margin: const EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+              border: Border.all(
+                width: 0.7,
+                color: Colors.grey,
               ),
-              const SizedBox(
-                height: 3,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    model.categoryName,
-                    style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  Text(
-                    'Made by: ${model.ownerName}',
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black),
-                  ),
-                  Text(
-                    model.locaion,
-                    style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.black),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    'EGP ${model.price} ',
-                    style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
-                  ),
-                ],
-              ),
-            ]),
+              borderRadius: BorderRadius.circular(5)),
+          child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 140,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(model.categoryImg),
+                          fit: BoxFit.fill),
+                      borderRadius: BorderRadius.circular(5)),
+                ),
+                const SizedBox(
+                  height: 3,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      model.categoryName,
+                      style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      'Made by: ${model.ownerName}',
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      model.locaion,
+                      style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'EGP ${model.price} ',
+                      style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
+                  ],
+                ),
+              ]),
+        ),
       ),
     );
-
-
