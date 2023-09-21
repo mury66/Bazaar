@@ -9,6 +9,7 @@ import 'package:task/shared/cubit/shop_cubit.dart';
 
 import '../../layouts/shop_app/search/search_screen.dart';
 import '../../layouts/shop_app/shop_layout/shop_layout.dart';
+import '../../models/cart_model/cart_model.dart';
 import '../../models/categories/categories_list_model.dart';
 import '../../models/item_model/item_componet_model.dart';
 import '../themes/themes.dart';
@@ -33,6 +34,18 @@ AppBar defaultAppBar(BuildContext context) => AppBar(
             ))
       ],
     );
+
+Widget textField(
+    {required context, required String hintText, required String label}) {
+  TextField(
+    decoration: InputDecoration(
+        alignLabelWithHint: true,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        hintText: hintText,
+        label: Text(label)),
+  );
+  return textField(context: context, hintText: hintText, label: label);
+}
 
 void navigateTo(context, widget) =>
     Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
@@ -208,10 +221,6 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
           height: 250,
           // margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
-              border: Border.all(
-                width: 0.7,
-                color: Colors.grey,
-              ),
               borderRadius: BorderRadius.circular(5)),
           child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -270,3 +279,211 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
         ),
       ),
     );
+
+class CartItem extends StatelessWidget {
+  CartModel model;
+
+  CartItem({super.key ,required this.model});
+
+  @override
+  Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+
+
+
+    return Container(
+      height: size.height*0.2,
+      width: size.width*0.9,
+
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(width: 1,color:Colors.black),
+      ),
+      margin: const EdgeInsets.only(bottom: 5,top: 5,left: 25,right: 25),
+
+
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children:[
+          Container(
+            alignment: Alignment.centerLeft,
+            width: size.width*0.45,
+            height: size.height*0.2,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(model.image),
+                    fit: BoxFit.fill),
+                borderRadius: BorderRadius.circular(5)),
+          ),
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                model.title,
+                style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              Text(
+                model.description,
+                style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black),
+              ),
+              Text(
+                model.location,
+                style: const TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black),
+              ),
+              Text(
+                model.date,
+                style: const TextStyle(
+                    fontSize: 8,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: Text(
+                  'EGP ${model.price} ',
+                  style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
+                ),
+              )
+
+
+            ],
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: Card(
+              elevation: 0,
+              color: Color(0xffEA4335).withOpacity(0.2),
+
+              margin: const EdgeInsets.only(right: 5),
+
+
+
+              child: IconButton(icon:Icon(Icons.delete_outlined,color: Colors.red),color: Colors.pinkAccent,onPressed: (){},), ),
+          ),
+
+
+        ],
+
+
+      ),
+    );
+
+
+
+  }
+}
+
+class FavouriteItem extends StatelessWidget {
+  CartModel model;
+
+  FavouriteItem({super.key ,required this.model});
+
+  @override
+  Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+
+
+
+    return Container(
+      height: size.height*0.2,
+      width: size.width*0.9,
+
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(width: 1,color:Colors.black),
+      ),
+      margin: const EdgeInsets.only(bottom: 5,top: 5,left: 25,right: 25),
+
+
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children:[
+          Container(
+            alignment: Alignment.centerLeft,
+            width: size.width*0.45,
+            height: size.height*0.2,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(model.image),
+                    fit: BoxFit.fill),
+                borderRadius: BorderRadius.circular(5)),
+          ),
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                model.title,
+                style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              Text(
+                model.description,
+                style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black),
+              ),
+              Text(
+                model.location,
+                style: const TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black),
+              ),
+              Text(
+                model.date,
+                style: const TextStyle(
+                    fontSize: 8,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: Text(
+                  'EGP ${model.price} ',
+                  style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
+                ),
+              )
+
+
+            ],
+          ),
+          Container(
+            alignment: Alignment.centerRight,
+            margin: const EdgeInsets.only(right: 5),
+            child: IconButton(icon:Icon(Icons.favorite,color: Colors.red),onPressed: (){
+
+            },),
+          ),
+
+
+        ],
+
+
+      ),
+    );
+  }
+}

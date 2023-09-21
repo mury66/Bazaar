@@ -136,7 +136,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             ElevatedButton(
               onPressed: () {
-                  ShopCubit.get(context).changeCartState(context);
+                  ShopCubit.get(context).changeCartState(context: context,text: 'Sucessfuly Added Your to cart');
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red, fixedSize: const Size(340, 50)),

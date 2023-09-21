@@ -305,6 +305,7 @@ class HomeScreen extends StatelessWidget {
                     : list = sculpture;
 
         return Scaffold(
+          appBar: defaultAppBar(context),
           body: SingleChildScrollView(
             child: Column(
               children: [

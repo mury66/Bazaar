@@ -19,7 +19,6 @@ class ShopLayout extends StatelessWidget {
         var cubit = ShopCubit.get(context);
         Size size = MediaQuery.of(context).size;
         return  Scaffold(
-          appBar: defaultAppBar(context),
           body: cubit.bottomScreens[cubit.current],
           bottomNavigationBar: Container(
             height: size.width * .155,

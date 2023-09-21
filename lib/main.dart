@@ -50,8 +50,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-            create: (context) => RegisterCubit(RegisterInitialState())),
+        BlocProvider(create: (context) => RegisterCubit(RegisterInitialState())),
         BlocProvider(create: (context) => LoginCubit(LoginInitialState())),
         BlocProvider(create: (context) => ShopCubit(ShopInitialState())),
         BlocProvider(create: (context) => AppCubit(AppInitialState()))
@@ -61,6 +60,7 @@ class MyApp extends StatelessWidget {
           builder: (BuildContext context, state) {
             {
               var cubit = AppCubit.get(context);
+
               return MaterialApp(
                 title: 'Flutter Demo',
                 theme: lightTheme,
