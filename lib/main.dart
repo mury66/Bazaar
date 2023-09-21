@@ -56,22 +56,21 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ShopCubit(ShopInitialState())),
         BlocProvider(create: (context) => AppCubit(AppInitialState()))
       ],
-      child: BlocConsumer<AppCubit,AppStates>(
-        listener: (BuildContext context, state)=>{} ,
-        builder: (BuildContext context, state) {
-          {
-            var cubit = AppCubit.get(context);
-            return MaterialApp(
-          title: 'Flutter Demo',
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          themeMode:ThemeMode.light,
-          debugShowCheckedModeBanner: false,
-          home: SplashScreen(startWidget: startWidget),
-          );
-        }
-        }
-      ),
+      child: BlocConsumer<AppCubit, AppStates>(
+          listener: (BuildContext context, state) => {},
+          builder: (BuildContext context, state) {
+            {
+              var cubit = AppCubit.get(context);
+              return MaterialApp(
+                title: 'Flutter Demo',
+                theme: lightTheme,
+                darkTheme: darkTheme,
+                themeMode: ThemeMode.light,
+                debugShowCheckedModeBanner: false,
+                home: const SplashScreen(startWidget: ShopLayout()),
+              );
+            }
+          }),
     );
   }
 }
