@@ -12,16 +12,16 @@ class CartScreen extends StatelessWidget {
 
     List<CartModel> component = [
       CartModel(
-        image:"assets/images/accessories/asnyal.jpg" ,
-        title: "ansyal",
+        image:"assets/images/sculpture/beauty.jpg" ,
+        title: "beauty",
         description:"made by thread" ,
         location: "maadi,cairo",
         date:"5 days ago" ,
         price:499.0 ,
       ),
       CartModel(
-        image:"assets/images/accessories/nicklaus.jpg" ,
-        title: "nicklaus",
+        image:"assets/images/sculpture/bloop.jpg" ,
+        title: "bloop",
         description:"made by thread" ,
         location: "maadi,cairo",
         date:"5 days ago" ,

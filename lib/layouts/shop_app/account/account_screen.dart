@@ -5,6 +5,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/constants/constants.dart';
+import '../favourites/favourites_screen.dart';
 import '../sell_product/sell_product.dart';
 
 class Account_Screen extends StatelessWidget {
@@ -27,7 +28,9 @@ class Account_Screen extends StatelessWidget {
           title: const Text("Favorites"),
           leading: const Icon(Icons.favorite_outline_outlined),
           trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: () {}),
+          onTap: () {
+            navigateTo(context, FavoriteScreen());
+          }),
       ListTile(
           title: const Text("Language"),
           leading: const Icon(Icons.flag_outlined),
@@ -48,13 +51,16 @@ class Account_Screen extends StatelessWidget {
           leading: const Icon(Icons.sell_outlined),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-          navigateTo(context, const SellProduct());
+          navigateTo(context, SellProduct());
           }),
-      const Center(
-        child: Text(
-          "─────────────────────────────────",
-          style: TextStyle(
-            fontSize: 15,
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        child: const Center(
+          child: Text(
+            "────────────────────────────",
+            style: TextStyle(
+              fontSize: 15,
+            ),
           ),
         ),
       ),
@@ -69,15 +75,9 @@ class Account_Screen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar:AppBar(
-    title: const Text("profile"),
-    centerTitle: true,
-    ) ,
+      appBar: AppBar(title: Center(child: Text("profile")),),
       body: Column(
         children: [
-          const SizedBox(
-            height: 10,
-          ),
           Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => accountTiles[index],

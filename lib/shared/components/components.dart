@@ -297,7 +297,7 @@ class CartItem extends StatelessWidget {
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        border: Border.all(width: 1,color:Colors.black),
+        border: Border.all(width: 1,color:Colors.grey),
       ),
       margin: const EdgeInsets.only(bottom: 5,top: 5,left: 25,right: 25),
 
@@ -405,7 +405,7 @@ class FavouriteItem extends StatelessWidget {
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        border: Border.all(width: 1,color:Colors.black),
+        border: Border.all(width: 1,color:Colors.grey),
       ),
       margin: const EdgeInsets.only(bottom: 5,top: 5,left: 25,right: 25),
 
