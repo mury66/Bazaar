@@ -2,10 +2,11 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart ';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:task/layouts/shop_app/sell%20product/sell_product.dart';
+import 'package:task/network/remote/end_points/end_points.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/constants/constants.dart';
-import '../sell_product/sell_product.dart';
 
 class Account_Screen extends StatelessWidget {
   const Account_Screen({Key? key}) : super(key: key);
@@ -68,64 +69,58 @@ class Account_Screen extends StatelessWidget {
           }),
     ];
 
-    return Scaffold(
-      appBar:AppBar(
-    title: const Text("profile"),
-    centerTitle: true,
-    ) ,
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Expanded(
-            child: ListView.separated(
-              itemBuilder: (context, index) => accountTiles[index],
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 5,
-              ),
-              itemCount: accountTiles.length,
+    return Column(
+      children: [
+        const SizedBox(
+          height: 10,
+        ),
+        Expanded(
+          child: ListView.separated(
+            itemBuilder: (context, index) => accountTiles[index],
+            separatorBuilder: (context, index) => const SizedBox(
+              height: 5,
             ),
+            itemCount: accountTiles.length,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              socialMediaIcons(
-                  tapped: () {},
-                  icon: EvaIcons.facebook,
-                  backGroundColor: HexColor("#E1E1E1"),
-                  iconColor: Colors.indigo),
-              const SizedBox(
-                width: 15,
-              ),
-              socialMediaIcons(
-                  tapped: () {},
-                  icon: LineIcons.whatSApp,
-                  backGroundColor: HexColor("#E1E1E1"),
-                  iconColor: Colors.green),
-              const SizedBox(
-                width: 15,
-              ),
-              socialMediaIcons(
-                  tapped: () {},
-                  icon: LineIcons.instagram,
-                  backGroundColor: HexColor("#E1E1E1"),
-                  iconColor: Colors.purple),
-              const SizedBox(
-                width: 15,
-              ),
-              socialMediaIcons(
-                  tapped: () {},
-                  icon: EvaIcons.google,
-                  backGroundColor: HexColor("#E1E1E1"),
-                  iconColor: Colors.redAccent),
-            ],
-          ),
-          const SizedBox(
-            height: 35,
-          ),
-        ],
-      ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            socialMediaIcons(
+                tapped: () {},
+                icon: EvaIcons.facebook,
+                backGroundColor: HexColor("#E1E1E1"),
+                iconColor: Colors.indigo),
+            const SizedBox(
+              width: 15,
+            ),
+            socialMediaIcons(
+                tapped: () {},
+                icon: LineIcons.whatSApp,
+                backGroundColor: HexColor("#E1E1E1"),
+                iconColor: Colors.green),
+            const SizedBox(
+              width: 15,
+            ),
+            socialMediaIcons(
+                tapped: () {},
+                icon: LineIcons.instagram,
+                backGroundColor: HexColor("#E1E1E1"),
+                iconColor: Colors.purple),
+            const SizedBox(
+              width: 15,
+            ),
+            socialMediaIcons(
+                tapped: () {},
+                icon: EvaIcons.google,
+                backGroundColor: HexColor("#E1E1E1"),
+                iconColor: Colors.redAccent),
+          ],
+        ),
+        const SizedBox(
+          height: 35,
+        ),
+      ],
     );
   }
 }
