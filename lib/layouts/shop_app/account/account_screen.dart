@@ -3,6 +3,7 @@ import 'package:flutter/material.dart ';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/constants/constants.dart';
 import '../favourites/favourites_screen.dart';
@@ -91,7 +92,8 @@ class Account_Screen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               socialMediaIcons(
-                  tapped: () {},
+                  tapped: ()async{
+                    await launchUrl(Uri.parse("https://pub.dev/packages/url_launcher"));                  },
                   icon: EvaIcons.facebook,
                   backGroundColor: HexColor("#E1E1E1"),
                   iconColor: Colors.indigo),
