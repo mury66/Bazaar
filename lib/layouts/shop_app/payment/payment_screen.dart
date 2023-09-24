@@ -7,14 +7,14 @@ class PaymentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size=MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 2, // Number of tabs
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Payment"),
           centerTitle: true,
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(
                 text: "Visa",
@@ -29,7 +29,7 @@ class PaymentScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             children: [
-              Row(
+              const Row(
                 children: [
                   Text("Total"),
                   Expanded(child: SizedBox()),
@@ -42,82 +42,89 @@ class PaymentScreen extends StatelessWidget {
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          Center(
+                          const Center(
                             child: Text(
                               "Enter your card details",
-                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Card Number",
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Card Holder Name",
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Expiry Date",
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "CVV",
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          SizedBox(height: 20),
-                          ElevatedButton(onPressed: () {}, child: Text("Pay")),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("Pay")),
                         ],
                       ),
                     ),
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          Center(
+                          const Center(
                             child: Text(
                               "Cash on delivery",
-                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ),
-
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Name",
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Address",
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          MaterialButton(onPressed: (){
-                            navigateTo(context, const PaymentScreen());
-
-                          },
-                            color: Color(0xffFF0000),
-                            minWidth: size.width*0.9,
-                            height: size.height*0.09,
+                          MaterialButton(
+                            onPressed: () {
+                              navigateTo(context, const PaymentScreen());
+                            },
+                            color: const Color(0xffFF0000),
+                            minWidth: size.width * 0.9,
+                            height: size.height * 0.09,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child:  Text("Submit Payment",style: TextStyle(color: Colors.white,fontSize: size.width*0.03),),
-
-                          )                        ],
+                            child: Text(
+                              "Submit Payment",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: size.width * 0.03),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ],

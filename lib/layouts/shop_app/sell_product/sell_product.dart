@@ -10,8 +10,8 @@ class SellProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var nameController = TextEditingController();
-    var materialController =TextEditingController();
-    var priceController =TextEditingController();
+    var materialController = TextEditingController();
+    var priceController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sell Your Product',
@@ -44,8 +44,7 @@ class SellProduct extends StatelessWidget {
                     Icons.add_a_photo,
                     color: Colors.grey,
                   )),
-              const SizedBox(
-                  height: 30),
+              const SizedBox(height: 30),
               const Text(
                 'Chose the product category:',
                 style: TextStyle(
@@ -56,7 +55,7 @@ class SellProduct extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              DropdownWithImage(),
+              const DropdownWithImage(),
               const SizedBox(
                 height: 30,
               ),
@@ -64,14 +63,13 @@ class SellProduct extends StatelessWidget {
                 children: [
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10,10,10,0),
+                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: defaultinputform(
-                          submitted:(value){},
+                          submitted: (value) {},
                           type: TextInputType.text,
                           prefix: Icons.text_snippet_outlined,
                           controller: nameController,
-                          hint: "product Name"
-                      ),
+                          hint: "product Name"),
                     ),
                   ),
                   const SizedBox(
@@ -79,14 +77,13 @@ class SellProduct extends StatelessWidget {
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(10,10,10,0),
+                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: defaultinputform(
-                          submitted:(value){},
+                          submitted: (value) {},
                           type: TextInputType.text,
                           prefix: Icons.area_chart_rounded,
                           controller: materialController,
-                          hint: "product Material"
-                      ),
+                          hint: "product Material"),
                     ),
                   ),
                   const SizedBox(
@@ -94,14 +91,13 @@ class SellProduct extends StatelessWidget {
                   ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10,10,10,0),
+                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: defaultinputform(
-                          submitted:(value){},
+                          submitted: (value) {},
                           type: TextInputType.text,
                           prefix: Icons.monetization_on_outlined,
                           controller: nameController,
-                          hint: "product Price"
-                      ),
+                          hint: "product Price"),
                     ),
                   ),
                 ],
