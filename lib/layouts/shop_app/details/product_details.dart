@@ -3,6 +3,7 @@ import 'package:task/models/item_model/item_componet_model.dart';
 import 'package:task/shared/components/components.dart';
 
 import 'package:task/layouts/shop_app/details/rating_bar.dart';
+import 'package:task/shared/themes/themes.dart';
 
 import '../../../shared/cubit/shop_cubit.dart';
 import 'feedback.dart';
@@ -127,9 +128,9 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
               Text(
                 'EGP ${widget.model.price}',
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 22,
-                    color: Colors.red,
+                    color: PrimaryColour,
                     fontWeight: FontWeight.bold),
               ),
               const Divider(
@@ -146,7 +147,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       context: context, text: 'Sucessfuly Added Your to cart');
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor:PrimaryColour,
                     fixedSize: const Size(340, 50)),
                 child: const Text('Add to cart',
                     style: TextStyle(fontSize: 20, color: Colors.white)),

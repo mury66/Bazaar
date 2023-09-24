@@ -215,10 +215,10 @@ Widget categoryItemBuilder(List<CategoriesModel> categories, context) =>
 Widget productItem(ItemComponentModel model, context) => InkWell(
       onTap: model.onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Container(
           width: double.infinity,
-          height: 250,
+          height: 300,
           // margin: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5)),
@@ -317,9 +317,8 @@ class CartItem extends StatelessWidget {
 
 
     return Container(
-      height: size.height*0.2,
-      width: size.width*0.9,
-
+      height: size.height*0.15,
+      width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         border: Border.all(width: 1,color:Colors.grey),
@@ -331,13 +330,12 @@ class CartItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:[
           Container(
-            alignment: Alignment.centerLeft,
-            width: size.width*0.45,
-            height: size.height*0.2,
+            width: 150,
+            height: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(model.image),
-                    fit: BoxFit.fill),
+                ),
                 borderRadius: BorderRadius.circular(5)),
           ),
 
@@ -392,13 +390,11 @@ class CartItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
             child: Card(
               elevation: 0,
-              color: Color(0xffEA4335).withOpacity(0.2),
+              //color: Color(0xffEA4335).withOpacity(0.2),
 
               margin: const EdgeInsets.only(right: 5),
 
-
-
-              child: IconButton(icon:Icon(Icons.delete_outlined,color: Colors.red),color: Colors.pinkAccent,onPressed: (){},), ),
+              child: IconButton(icon:Icon(Icons.delete_outlined,color: Colors.red,size: 25,),onPressed: (){},), ),
           ),
 
 
@@ -425,9 +421,8 @@ class FavouriteItem extends StatelessWidget {
 
 
     return Container(
-      height: size.height*0.2,
-      width: size.width*0.9,
-
+      height: size.height*0.15,
+      width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         border: Border.all(width: 1,color:Colors.grey),
@@ -439,9 +434,8 @@ class FavouriteItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:[
           Container(
-            alignment: Alignment.centerLeft,
-            width: size.width*0.45,
-            height: size.height*0.2,
+            width: 150,
+            height: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(model.image),

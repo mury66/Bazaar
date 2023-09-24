@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-var PrimaryColour = HexColor("#EE9273");
+var PrimaryColour = HexColor("#A67C52");
 var Grey = HexColor("#A67C52");
 
 ThemeData darkTheme = ThemeData(
