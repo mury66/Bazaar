@@ -317,15 +317,13 @@ class CartItem extends StatelessWidget {
 
 
     return Container(
-      height: size.height*0.15,
+      height: size.height*0.19,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         border: Border.all(width: 1,color:Colors.grey),
       ),
       margin: const EdgeInsets.only(bottom: 5,top: 5,left: 25,right: 25),
-
-
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:[
@@ -334,9 +332,10 @@ class CartItem extends StatelessWidget {
             height: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
+                  fit: BoxFit.cover,
                     image: AssetImage(model.image),
                 ),
-                borderRadius: BorderRadius.circular(5)),
+                borderRadius: BorderRadius.zero),
           ),
 
           Column(
