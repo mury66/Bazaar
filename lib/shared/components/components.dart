@@ -420,7 +420,7 @@ class FavouriteItem extends StatelessWidget {
 
 
     return Container(
-      height: size.height*0.15,
+      height: size.height*0.19,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
@@ -438,8 +438,9 @@ class FavouriteItem extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(model.image),
-                    fit: BoxFit.fill),
-                borderRadius: BorderRadius.circular(5)),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.zero),
           ),
 
           Column(
