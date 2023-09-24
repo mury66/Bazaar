@@ -49,7 +49,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       appBar: AppBar(
         actions: [
           MaterialButton(onPressed: submit,
-          child: const Text("Skip",style: TextStyle(
+          child: Text("Skip",style: TextStyle(
             color: PrimaryColour,
             fontWeight: FontWeight.bold,
             fontSize: 17

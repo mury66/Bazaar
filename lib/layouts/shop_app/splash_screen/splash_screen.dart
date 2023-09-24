@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      backgroundColor: HexColor("#9D170C"),
+      backgroundColor: PrimaryColour,
         duration: 1500,
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType:PageTransitionType.rightToLeftWithFade,

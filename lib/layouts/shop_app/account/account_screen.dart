@@ -57,7 +57,7 @@ class Account_Screen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: const Center(
           child: Text(
-            "────────────────────────────",
+            "───────────────────",
             style: TextStyle(
               fontSize: 15,
             ),

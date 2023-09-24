@@ -6,7 +6,7 @@ import '../../../shared/components/components.dart';
 import '../../../shared/constants/constants.dart';
 import '../../../shared/cubit/Shop_states.dart';
 import '../../../shared/cubit/shop_cubit.dart';
-import '../../../shared/details/product_details.dart';
+import '../details/product_details.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,8 +20,9 @@ class HomeScreen extends StatelessWidget {
 
         List<ItemComponentModel> crafts = [
           ItemComponentModel(
+              title: craft[0].title,
               categoryName: craft[0].categoryName,
-              categoryImg: craft[0].categoryImg,
+              image: craft[0].image,
               locaion: craft[0].locaion,
               ownerName: craft[0].ownerName,
               price: craft[0].price,
@@ -35,8 +36,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: craft[1].title,
               categoryName: craft[1].categoryName,
-              categoryImg: craft[1].categoryImg,
+              image: craft[1].image,
               locaion: craft[1].locaion,
               ownerName: craft[1].ownerName,
               price: craft[1].price,
@@ -45,13 +47,14 @@ class HomeScreen extends StatelessWidget {
                   context,
                   ProductDetails(
                     model: craft[1],
-                    rate: 2,
+                    rate: 3,
                   ),
                 );
               }),
           ItemComponentModel(
+              title: craft[2].title,
               categoryName: craft[2].categoryName,
-              categoryImg: craft[2].categoryImg,
+              image: craft[2].image,
               locaion: craft[2].locaion,
               ownerName: craft[2].ownerName,
               price: craft[2].price,
@@ -60,13 +63,14 @@ class HomeScreen extends StatelessWidget {
                   context,
                   ProductDetails(
                     model: craft[2],
-                    rate: 5,
+                    rate: 3,
                   ),
                 );
               }),
           ItemComponentModel(
+              title: craft[3].title,
               categoryName: craft[3].categoryName,
-              categoryImg: craft[3].categoryImg,
+              image: craft[3].image,
               locaion: craft[3].locaion,
               ownerName: craft[3].ownerName,
               price: craft[3].price,
@@ -75,13 +79,14 @@ class HomeScreen extends StatelessWidget {
                   context,
                   ProductDetails(
                     model: craft[3],
-                    rate: 5,
+                    rate: 3,
                   ),
                 );
               }),
           ItemComponentModel(
+              title: craft[4].title,
               categoryName: craft[4].categoryName,
-              categoryImg: craft[4].categoryImg,
+              image: craft[4].image,
               locaion: craft[4].locaion,
               ownerName: craft[4].ownerName,
               price: craft[4].price,
@@ -97,8 +102,9 @@ class HomeScreen extends StatelessWidget {
         ];
         List<ItemComponentModel> painting = [
           ItemComponentModel(
+              title: paint[0].categoryName,
               categoryName: paint[0].categoryName,
-              categoryImg: paint[0].categoryImg,
+              image: paint[0].image,
               locaion: paint[0].locaion,
               ownerName: paint[0].ownerName,
               price: paint[0].price,
@@ -112,8 +118,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: paint[1].categoryName,
               categoryName: paint[1].categoryName,
-              categoryImg: paint[1].categoryImg,
+              image: paint[1].image,
               locaion: paint[1].locaion,
               ownerName: paint[1].ownerName,
               price: paint[1].price,
@@ -127,8 +134,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: paint[2].categoryName,
               categoryName: paint[2].categoryName,
-              categoryImg: paint[2].categoryImg,
+              image: paint[2].image,
               locaion: paint[2].locaion,
               ownerName: paint[2].ownerName,
               price: paint[2].price,
@@ -142,8 +150,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: paint[3].title,
               categoryName: paint[3].categoryName,
-              categoryImg: paint[3].categoryImg,
+              image: paint[3].image,
               locaion: paint[3].locaion,
               ownerName: paint[3].ownerName,
               price: paint[3].price,
@@ -159,8 +168,9 @@ class HomeScreen extends StatelessWidget {
         ];
         List<ItemComponentModel> accessories = [
           ItemComponentModel(
+              title: accessory[0].title,
               categoryName: accessory[0].categoryName,
-              categoryImg: accessory[0].categoryImg,
+              image: accessory[0].image,
               locaion: accessory[0].locaion,
               ownerName: accessory[0].ownerName,
               price: accessory[0].price,
@@ -174,8 +184,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: accessory[1].title,
               categoryName: accessory[1].categoryName,
-              categoryImg: accessory[1].categoryImg,
+              image: accessory[1].image,
               locaion: accessory[1].locaion,
               ownerName: accessory[1].ownerName,
               price: accessory[1].price,
@@ -190,7 +201,8 @@ class HomeScreen extends StatelessWidget {
               }),
           ItemComponentModel(
               categoryName: accessory[2].categoryName,
-              categoryImg: accessory[2].categoryImg,
+              title: accessory[2].title,
+              image: accessory[2].image,
               locaion: accessory[2].locaion,
               ownerName: accessory[2].ownerName,
               price: accessory[2].price,
@@ -206,8 +218,9 @@ class HomeScreen extends StatelessWidget {
         ];
         List<ItemComponentModel> sculpture = [
           ItemComponentModel(
+              title: sculptures[0].title,
               categoryName: sculptures[0].categoryName,
-              categoryImg: sculptures[0].categoryImg,
+              image: sculptures[0].image,
               locaion: sculptures[0].locaion,
               ownerName: sculptures[0].ownerName,
               price: sculptures[0].price,
@@ -221,8 +234,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: sculptures[1].title,
               categoryName: sculptures[1].categoryName,
-              categoryImg: sculptures[1].categoryImg,
+              image: sculptures[1].image,
               locaion: sculptures[1].locaion,
               ownerName: sculptures[1].ownerName,
               price: sculptures[1].price,
@@ -236,8 +250,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: sculptures[2].title,
               categoryName: sculptures[2].categoryName,
-              categoryImg: sculptures[2].categoryImg,
+              image: sculptures[2].image,
               locaion: sculptures[2].locaion,
               ownerName: sculptures[2].ownerName,
               price: sculptures[2].price,
@@ -251,8 +266,9 @@ class HomeScreen extends StatelessWidget {
                 );
               }),
           ItemComponentModel(
+              title: sculptures[3].title,
               categoryName: sculptures[3].categoryName,
-              categoryImg: sculptures[3].categoryImg,
+              image: sculptures[3].image,
               locaion: sculptures[3].locaion,
               ownerName: sculptures[3].ownerName,
               price: sculptures[3].price,

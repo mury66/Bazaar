@@ -155,7 +155,7 @@ class RegisterScreen extends StatelessWidget {
                           );
                         }
                       }) :
-                      const Center(child: CircularProgressIndicator(color: PrimaryColour,)),
+                      Center(child: CircularProgressIndicator(color: PrimaryColour,)),
                       const SizedBox(
                         height: 60,),
                       const Text(
@@ -196,7 +196,7 @@ class RegisterScreen extends StatelessWidget {
                               onPressed: (){
                                 navigateAndFinish(context,LogInScreen());
                               },
-                              child: const Text("logIn Now",style: TextStyle(
+                              child: Text("logIn Now",style: TextStyle(
                                   color: PrimaryColour
                               ),)),
                         ],

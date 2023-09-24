@@ -126,7 +126,7 @@ Widget defaultinputform({
               borderRadius: BorderRadius.circular(12),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: PrimaryColour),
+              borderSide: BorderSide(color: PrimaryColour),
               borderRadius: BorderRadius.circular(12),
             ),
             prefixIcon: Icon(prefix, size: 20, color: HexColor("#5A5A5A")),
@@ -232,7 +232,7 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
                   height: 140,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(model.categoryImg),
+                          image: AssetImage(model.image),
                           fit: BoxFit.fill),
                       borderRadius: BorderRadius.circular(5)),
                 ),
@@ -243,7 +243,7 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      model.categoryName,
+                      model.title,
                       style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -268,10 +268,10 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
                     ),
                     Text(
                       'EGP ${model.price} ',
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
-                          color: Colors.red),
+                          color: PrimaryColour),
                     ),
                   ],
                 ),
@@ -279,6 +279,31 @@ Widget productItem(ItemComponentModel model, context) => InkWell(
         ),
       ),
     );
+
+Widget chatItem({required String name,required String chat})=>Padding(
+  padding: const EdgeInsets.all(10.0),
+  child: Row(
+    children: [
+      CircleAvatar(
+        backgroundColor: PrimaryColour,
+        radius: 35,
+        child: Icon(Icons.person,color: Colors.white,),
+      ),
+      SizedBox(width: 15,),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name,style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+          ),),
+          SizedBox(height: 3,),
+          Text(chat)
+        ],
+      )
+    ],
+  ),
+);
 
 class CartItem extends StatelessWidget {
   CartModel model;
@@ -353,10 +378,10 @@ class CartItem extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 25),
                 child: Text(
                   'EGP ${model.price} ',
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: Colors.red),
+                      color: PrimaryColour),
                 ),
               )
 

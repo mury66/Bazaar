@@ -24,7 +24,9 @@ class ShopCubit extends Cubit<ShopStates> {
     Icons.account_circle_rounded,
   ];
 
-  List<Widget> bottomScreens = const [
+  List<ItemComponentModel> cartItems = [];
+
+  List<Widget> bottomScreens = [
     HomeScreen(),
     ChatsScreen(),
     CartScreen(),

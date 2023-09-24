@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-const PrimaryColour = Colors.red;
-var Grey = HexColor("#E1E1E1");
+var PrimaryColour = HexColor("#EE9273");
+var Grey = HexColor("#A67C52");
 
 ThemeData darkTheme = ThemeData(
   primaryColor: PrimaryColour,
     scaffoldBackgroundColor: Color.fromARGB(255, 12, 24, 72),
     useMaterial3: true,
-    primarySwatch: PrimaryColour,
+    primarySwatch: Colors.brown,
     textTheme: const TextTheme(
         bodyLarge: TextStyle(
             color: Colors.white,
@@ -19,7 +19,7 @@ ThemeData darkTheme = ThemeData(
         )
     ),
     fontFamily:"BackHome" ,
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedItemColor: PrimaryColour,
         unselectedItemColor: Colors.grey,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
@@ -41,7 +41,7 @@ ThemeData darkTheme = ThemeData(
 ThemeData lightTheme = ThemeData(
     primaryColor: PrimaryColour,
     useMaterial3: true,
-    primarySwatch: PrimaryColour,
+    primarySwatch: Colors.brown,
     textTheme: const TextTheme(
         bodyLarge: TextStyle(
           color: Colors.black,
@@ -50,7 +50,7 @@ ThemeData lightTheme = ThemeData(
         )
     ),
     fontFamily:"BackHome",
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedItemColor: PrimaryColour,
         unselectedItemColor: Colors.grey,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
