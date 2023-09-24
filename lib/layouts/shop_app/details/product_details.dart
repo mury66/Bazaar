@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:task/models/item_model/item_componet_model.dart';
 import 'package:task/shared/components/components.dart';
-import 'package:task/shared/details/feedback.dart';
-import 'package:task/shared/details/rating_bar.dart';
+
 import 'package:task/layouts/shop_app/details/rating_bar.dart';
 
 import '../../../shared/cubit/shop_cubit.dart';
+import 'feedback.dart';
 
 // ignore: must_be_immutable
 class ProductDetails extends StatefulWidget {
@@ -43,7 +43,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: 200,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(widget.model.categoryImg),
+                            image: AssetImage(widget.model.image),
                             fit: BoxFit.fill),
                         borderRadius: BorderRadius.circular(5)),
                   ),

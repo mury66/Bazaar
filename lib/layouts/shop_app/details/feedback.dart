@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart%20';
 import 'package:task/models/item_model/item_componet_model.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
-import 'package:task/shared/details/dynamic_rating.dart';
-import 'package:task/shared/details/rating_bar.dart';
+import 'dynamic_rating.dart';
 
 class ProductFeedback extends StatelessWidget {
   ItemComponentModel model;
@@ -33,7 +32,7 @@ class ProductFeedback extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       image: DecorationImage(
-                          image: AssetImage(model.categoryImg),
+                          image: AssetImage(model.image),
                           fit: BoxFit.fill)),
                 ),
                 const SizedBox(
