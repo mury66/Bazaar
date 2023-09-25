@@ -8,6 +8,7 @@ import '../../../shared/components/components.dart';
 import '../../../shared/constants/constants.dart';
 import '../favourites/favourites_screen.dart';
 import '../sell_product/sell_product.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class Account_Screen extends StatelessWidget {
   const Account_Screen({Key? key}) : super(key: key);
@@ -92,8 +93,11 @@ class Account_Screen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               socialMediaIcons(
-                  tapped: ()async{
-                    await launchUrl(Uri.parse("https://pub.dev/packages/url_launcher"));                  },
+                  tapped: (){
+                    launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
+                    mode: launcher.LaunchMode.externalApplication
+                    );
+                    },
                   icon: EvaIcons.facebook,
                   backGroundColor: HexColor("#E1E1E1"),
                   iconColor: Colors.indigo),
@@ -101,7 +105,11 @@ class Account_Screen extends StatelessWidget {
                 width: 15,
               ),
               socialMediaIcons(
-                  tapped: () {},
+                  tapped: (){
+                    launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
+                        mode: launcher.LaunchMode.externalApplication
+                    );
+                  },
                   icon: LineIcons.whatSApp,
                   backGroundColor: HexColor("#E1E1E1"),
                   iconColor: Colors.green),
@@ -109,7 +117,11 @@ class Account_Screen extends StatelessWidget {
                 width: 15,
               ),
               socialMediaIcons(
-                  tapped: () {},
+                  tapped: (){
+                    launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
+                        mode: launcher.LaunchMode.externalApplication
+                    );
+                  },
                   icon: LineIcons.instagram,
                   backGroundColor: HexColor("#E1E1E1"),
                   iconColor: Colors.purple),
@@ -117,7 +129,11 @@ class Account_Screen extends StatelessWidget {
                 width: 15,
               ),
               socialMediaIcons(
-                  tapped: () {},
+                  tapped: (){
+                    launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
+                        mode: launcher.LaunchMode.externalApplication
+                    );
+                  },
                   icon: EvaIcons.google,
                   backGroundColor: HexColor("#E1E1E1"),
                   iconColor: Colors.redAccent),

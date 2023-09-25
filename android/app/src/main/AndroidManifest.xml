@@ -4,7 +4,7 @@
         android:enableOnBackInvokedCallback="true"
         android:label="Bazaar"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -37,5 +37,6 @@
             
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Provide required visibility configuration for API level 30 and above -->
 
 </manifest>
