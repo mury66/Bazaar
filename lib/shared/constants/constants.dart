@@ -16,6 +16,8 @@ void SignOut(context) {
   });
 }
 
+String token = "";
+
 List<ItemComponentModel> craft = [
   ItemComponentModel(
       title: "Wall Tablo",

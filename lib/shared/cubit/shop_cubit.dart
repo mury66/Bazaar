@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task/network/remote/end_points/end_points.dart';
 import 'package:task/shared/cubit/Shop_states.dart';
 import '../../layouts/shop_app/account/account_screen.dart';
 import '../../layouts/shop_app/cart/cart_screen.dart';
@@ -7,6 +8,7 @@ import '../../layouts/shop_app/chats/chats_screen.dart';
 import '../../layouts/shop_app/home_screen/home_screen.dart';
 import '../../models/item_model/item_componet_model.dart';
 import '../../network/remote/dio_helper.dart';
+import '../constants/constants.dart';
 
 class ShopCubit extends Cubit<ShopStates> {
   ShopCubit(super.initialState);
@@ -65,7 +67,6 @@ class ShopCubit extends Cubit<ShopStates> {
     emit(ChangeCartState());
   }
 
-
   void getSearch(String value) {
     // emit(NewsGetSearchLoadingState());
     DioHelper.getData(url: "v2/everything", query: {
@@ -78,4 +79,25 @@ class ShopCubit extends Cubit<ShopStates> {
       // emit(NewsGetSearchErrorState(error.toString()));
     });
   }
+
+  void getProfileData(){
+    emit(GetShopDataLoadingState());
+    DioHelper.getData(
+      lang: "en",
+      url: PROFILE,
+      token: token,
+      query: {},
+    ).then((value){
+      print(value.data);
+      //userDataModel= LoginModel.fromjson(value.data);
+      //print(userDataModel.message);
+      emit(GetShopDataSuccessState());
+    }).catchError((onError)
+    {
+      print(onError.toString());
+      emit(GetShopDataErrorState());
+    }
+    );
+  }
+
 }

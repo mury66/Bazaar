@@ -12,7 +12,6 @@ class LoginModel
       data = UserData.fromJson(json["data"]);
     }
   }
-
 }
 
 class UserData

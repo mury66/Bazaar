@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart ';
-import 'package:task/shared/components/components.dart';
 import 'package:task/shared/constants/constants.dart';
-import 'package:task/shared/themes/themes.dart';
 class ChatsScreen extends StatelessWidget {
   const ChatsScreen({Key? key}) : super(key: key);
 

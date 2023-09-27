@@ -2,8 +2,8 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart ';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:task/layouts/shop_app/profile/profile_screen.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../shared/components/components.dart';
 import '../../../shared/constants/constants.dart';
 import '../favourites/favourites_screen.dart';
@@ -20,7 +20,10 @@ class Account_Screen extends StatelessWidget {
           title: const Text("My Account"),
           leading: const Icon(Icons.person),
           trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: () {}),
+          onTap: () {
+            ShopCubit.get(context).getProfileData();
+            navigateTo(context,ProfileScreen());
+          }),
       ListTile(
           title: const Text("Orders"),
           leading: const Icon(Icons.shopping_bag_outlined),

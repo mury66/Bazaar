@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         duration: 1500,
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType:PageTransitionType.rightToLeftWithFade,
-        splashIconSize: 200,
+        splashIconSize: 250,
         splash: const Image(image:AssetImage("assets/images/splash.png")),
         nextScreen: startWidget
     );

@@ -7,6 +7,7 @@ import 'package:task/layouts/shop_app/shop_layout/shop_layout.dart';
 import 'package:task/layouts/shop_app/splash_screen/splash_screen.dart';
 import 'package:task/network/remote/dio_helper.dart';
 import 'package:task/shared/blocObserver.dart';
+import 'package:task/shared/constants/constants.dart';
 import 'package:task/shared/cubit/Appcubit.dart';
 import 'package:task/shared/cubit/Appstates.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
@@ -23,7 +24,7 @@ void main() async {
   Bloc.observer = const SimpleBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
-  String? token = CacheHelper.getData(key: "token");
+  token = CacheHelper.getData(key: "token");
   bool? onBoarding = CacheHelper.getData(key: "onBoarding");
   late Widget startWidget;
 
