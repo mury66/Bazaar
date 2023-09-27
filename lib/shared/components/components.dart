@@ -7,11 +7,13 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:task/layouts/shop_app/cart/cart_screen.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 
+import '../../layouts/shop_app/details/feedback.dart';
 import '../../layouts/shop_app/search/search_screen.dart';
 import '../../layouts/shop_app/shop_layout/shop_layout.dart';
 import '../../models/cart_model/cart_model.dart';
 import '../../models/categories/categories_list_model.dart';
 import '../../models/item_model/item_componet_model.dart';
+import '../../models/orders_model/orders_model.dart';
 import '../themes/themes.dart';
 
 AppBar defaultAppBar(BuildContext context) => AppBar(
@@ -502,6 +504,124 @@ class FavouriteItem extends StatelessWidget {
         ],
 
 
+      ),
+    );
+  }
+}
+
+class OrdersItem extends StatelessWidget {
+  OrdersModel model;
+
+  OrdersItem({super.key, required this.model});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return InkWell(
+      onTap: (){
+        navigateTo(context,ProductFeedback(model: model));
+      },
+      child: Container(
+          height: size.height * 0.19,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(width: 1, color: Colors.grey),
+          ),
+          margin: const EdgeInsets.only(bottom: 5, top: 5, left: 25, right: 25),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 150,
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(model.image),
+                      ),
+                      borderRadius: BorderRadius.zero),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      model.title,
+                      style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      model.description,
+                      style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      model.location,
+                      style: const TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black),
+                    ),
+                    Text(
+                      model.date,
+                      style: const TextStyle(
+                          fontSize: 8,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25),
+                      child: Text(
+                        'EGP ${model.price} ',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: PrimaryColour),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      child: Text(
+                        model.status,
+                        style: const TextStyle(
+                            fontSize: 14,
+
+                            color: Colors.black),
+
+                        //color: Color(0xffEA4335).withOpacity(0.2),
+                      ),
+                      margin: const EdgeInsets.only(right: 5,top: 25),
+                    ),
+
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Container(
+                      child: Text(
+                        model.details,
+                        style: const TextStyle(
+                            fontSize: 10,
+                            decoration:TextDecoration.underline ,
+                            color: Colors.black),
+
+                        //color: Color(0xffEA4335).withOpacity(0.2),
+                      ),
+                      margin: const EdgeInsets.only(right: 5, bottom: 3),
+                    ),
+                  ],
+                ),
+
+              ],
+          ),
       ),
     );
   }

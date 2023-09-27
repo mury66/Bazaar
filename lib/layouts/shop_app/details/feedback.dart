@@ -4,7 +4,7 @@ import 'package:task/shared/cubit/shop_cubit.dart';
 import 'dynamic_rating.dart';
 
 class ProductFeedback extends StatelessWidget {
-  ItemComponentModel model;
+  var model;
 
   ProductFeedback({super.key, required this.model});
 

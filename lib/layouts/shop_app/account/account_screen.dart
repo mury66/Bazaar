@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart ';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:task/layouts/shop_app/orders/orders_screen.dart';
 import 'package:task/layouts/shop_app/profile/profile_screen.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 import '../../../shared/components/components.dart';
@@ -28,7 +29,9 @@ class Account_Screen extends StatelessWidget {
           title: const Text("Orders"),
           leading: const Icon(Icons.shopping_bag_outlined),
           trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: () {}),
+          onTap: () {
+            navigateTo(context,OrdersScreen());
+          }),
       ListTile(
           title: const Text("Favorites"),
           leading: const Icon(Icons.favorite_outline_outlined),
