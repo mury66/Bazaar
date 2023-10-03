@@ -24,7 +24,11 @@ void main() async {
   Bloc.observer = const SimpleBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
-  token = CacheHelper.getData(key: "token");
+  if (CacheHelper.getData(key: "token") != null) {
+    token = CacheHelper.getData(key: "token");
+  } else {
+    token = "";
+  }
   bool? onBoarding = CacheHelper.getData(key: "onBoarding");
   late Widget startWidget;
 
@@ -51,7 +55,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => RegisterCubit(RegisterInitialState())),
+        BlocProvider(
+            create: (context) => RegisterCubit(RegisterInitialState())),
         BlocProvider(create: (context) => LoginCubit(LoginInitialState())),
         BlocProvider(create: (context) => ShopCubit(ShopInitialState())),
         BlocProvider(create: (context) => AppCubit(AppInitialState()))
@@ -68,7 +73,7 @@ class MyApp extends StatelessWidget {
                 darkTheme: darkTheme,
                 themeMode: ThemeMode.light,
                 debugShowCheckedModeBanner: false,
-                home: SplashScreen(startWidget:startWidget),
+                home:  SplashScreen(startWidget: startWidget),
               );
             }
           }),

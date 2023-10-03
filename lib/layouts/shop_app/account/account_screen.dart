@@ -23,47 +23,47 @@ class Account_Screen extends StatelessWidget {
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
             ShopCubit.get(context).getProfileData();
-            navigateTo(context,ProfileScreen());
+            navigateTo(context, const ProfileScreen());
           }),
       ListTile(
           title: const Text("Orders"),
           leading: const Icon(Icons.shopping_bag_outlined),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            navigateTo(context,OrdersScreen());
+            navigateTo(context, const OrdersScreen());
           }),
       ListTile(
           title: const Text("Favorites"),
           leading: const Icon(Icons.favorite_outline_outlined),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            navigateTo(context, FavoriteScreen());
+            navigateTo(context, const FavoriteScreen());
           }),
-      ListTile(
-          title: const Text("Language"),
-          leading: const Icon(Icons.flag_outlined),
-          trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: () {}),
-      ListTile(
-          title: const Text("Country"),
-          leading: const Icon(LineIcons.globeWithAfricaShown),
-          trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: () {}),
-      ListTile(
-          title: const Text("Contact Us"),
-          leading: const Icon(Icons.local_phone_outlined),
-          trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: () {}),
+      // ListTile(
+      //     title: const Text("Language"),
+      //     leading: const Icon(Icons.flag_outlined),
+      //     trailing: const Icon(Icons.arrow_forward_ios),
+      //     onTap: () {}),
+      // ListTile(
+      //     title: const Text("Country"),
+      //     leading: const Icon(LineIcons.globeWithAfricaShown),
+      //     trailing: const Icon(Icons.arrow_forward_ios),
+      //     onTap: () {}),
+      // ListTile(
+      //     title: const Text("Contact Us"),
+      //     leading: const Icon(Icons.local_phone_outlined),
+      //     trailing: const Icon(Icons.arrow_forward_ios),
+      //     onTap: () {}),
       ListTile(
           title: const Text("Sell your products"),
           leading: const Icon(Icons.sell_outlined),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-          navigateTo(context, SellProduct());
+            navigateTo(context, const SellProduct());
           }),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50),
-        child: const Center(
+      const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 50),
+        child: Center(
           child: Text(
             "───────────────────",
             style: TextStyle(
@@ -83,7 +83,9 @@ class Account_Screen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text("profile")),),
+      appBar: AppBar(
+        title: const Center(child: Text("profile")),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -99,11 +101,10 @@ class Account_Screen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               socialMediaIcons(
-                  tapped: (){
+                  tapped: () {
                     launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
-                    mode: launcher.LaunchMode.externalApplication
-                    );
-                    },
+                        mode: launcher.LaunchMode.externalApplication);
+                  },
                   icon: EvaIcons.facebook,
                   backGroundColor: HexColor("#E1E1E1"),
                   iconColor: Colors.indigo),
@@ -111,10 +112,9 @@ class Account_Screen extends StatelessWidget {
                 width: 15,
               ),
               socialMediaIcons(
-                  tapped: (){
+                  tapped: () {
                     launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
-                        mode: launcher.LaunchMode.externalApplication
-                    );
+                        mode: launcher.LaunchMode.externalApplication);
                   },
                   icon: LineIcons.whatSApp,
                   backGroundColor: HexColor("#E1E1E1"),
@@ -123,10 +123,9 @@ class Account_Screen extends StatelessWidget {
                 width: 15,
               ),
               socialMediaIcons(
-                  tapped: (){
+                  tapped: () {
                     launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
-                        mode: launcher.LaunchMode.externalApplication
-                    );
+                        mode: launcher.LaunchMode.externalApplication);
                   },
                   icon: LineIcons.instagram,
                   backGroundColor: HexColor("#E1E1E1"),
@@ -135,10 +134,9 @@ class Account_Screen extends StatelessWidget {
                 width: 15,
               ),
               socialMediaIcons(
-                  tapped: (){
+                  tapped: () {
                     launcher.launchUrl(Uri.parse("https://www.facebook.com/"),
-                        mode: launcher.LaunchMode.externalApplication
-                    );
+                        mode: launcher.LaunchMode.externalApplication);
                   },
                   icon: EvaIcons.google,
                   backGroundColor: HexColor("#E1E1E1"),

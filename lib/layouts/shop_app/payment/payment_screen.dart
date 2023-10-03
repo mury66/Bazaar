@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart%20';
+import 'package:task/shared/cubit/shop_cubit.dart';
 
 import '../../../../../shared/components/components.dart';
 
@@ -77,9 +78,21 @@ class PaymentScreen extends StatelessWidget {
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          ElevatedButton(
-                              onPressed: () {}, child: const Text("Pay")),
+                          const SizedBox(height: 30),
+                          Center(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  ShopCubit.get(context).changeCartState(
+                                      context: context,
+                                      text: 'Sucessfuly Payment');
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.red,
+                                    minimumSize: const Size(325, 60)),
+                                child: const Text('Pay',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20))),
+                          ),
                         ],
                       ),
                     ),
@@ -107,23 +120,40 @@ class PaymentScreen extends StatelessWidget {
                               border: OutlineInputBorder(),
                             ),
                           ),
-                          MaterialButton(
-                            onPressed: () {
-                              navigateTo(context, const PaymentScreen());
-                            },
-                            color: const Color(0xffFF0000),
-                            minWidth: size.width * 0.9,
-                            height: size.height * 0.09,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              "Submit Payment",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: size.width * 0.03),
-                            ),
-                          )
+                          // MaterialButton(
+                          //   onPressed: () {
+                          //     navigateTo(context, const PaymentScreen());
+                          //   },
+                          //   color: const Color(0xffFF0000),
+                          //   minWidth: size.width * 0.9,
+                          //   height: size.height * 0.09,
+                          //   shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(5),
+                          //   ),
+                          //   child: Text(
+                          //     "Submit Payment",
+                          //     style: TextStyle(
+                          //         color: Colors.white,
+                          //         fontSize: size.width * 0.03),
+                          //   ),
+                          // )
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Center(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  ShopCubit.get(context).changeCartState(
+                                      context: context,
+                                      text: 'Sucessfuly Payment');
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.red,
+                                    minimumSize: const Size(325, 60)),
+                                child: const Text('Submit Payment',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20))),
+                          ),
                         ],
                       ),
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart%20';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:task/layouts/shop_app/sell_product/upload_img.dart';
 import 'package:task/shared/components/components.dart';
 import 'package:task/shared/cubit/shop_cubit.dart';
 import 'category_dropdwon_list.dart';
@@ -35,15 +36,7 @@ class SellProduct extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: HexColor("#E1E1E1"),
-                      minimumSize: const Size(250, 60)),
-                  child: const Icon(
-                    Icons.add_a_photo,
-                    color: Colors.grey,
-                  )),
+              const UploadImage(),
               const SizedBox(height: 30),
               const Text(
                 'Chose the product category:',
@@ -65,7 +58,7 @@ class SellProduct extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: defaultinputform(
-                          submitted: (value) {},
+                          submitted: (value1) {},
                           type: TextInputType.text,
                           prefix: Icons.text_snippet_outlined,
                           controller: nameController,
@@ -94,9 +87,9 @@ class SellProduct extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: defaultinputform(
                           submitted: (value) {},
-                          type: TextInputType.text,
+                          type: TextInputType.number,
                           prefix: Icons.monetization_on_outlined,
-                          controller: nameController,
+                          controller: priceController,
                           hint: "product Price"),
                     ),
                   ),
